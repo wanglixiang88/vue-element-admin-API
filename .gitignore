@@ -3,3 +3,11 @@
 /.vs
 /dataModel/bin
 /dataModel/obj
+/IVueElementAdminServices/bin
+/IVueElementAdminServices/obj
+/VueElementAdminServices/bin
+/VueElementAdminServices/obj
+/VueElementAdminRepository/bin
+/VueElementAdminRepository/obj
+/IVueElementAdminRepository/obj
+/IVueElementAdminRepository/bin
