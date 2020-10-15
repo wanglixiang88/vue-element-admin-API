@@ -1,0 +1,9 @@
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\bin\Debug\ToolLibrary.Helper.dll
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\bin\Debug\ToolLibrary.Helper.pdb
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\bin\Debug\Newtonsoft.Json.dll
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\bin\Debug\Newtonsoft.Json.xml
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.csprojAssemblyReference.cache
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.csproj.CoreCompileInputs.cache
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.csproj.CopyComplete
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.dll
+E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.pdb
