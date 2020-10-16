@@ -94,6 +94,7 @@ namespace APIExample.Filter
     /// </summary>
     public class AuthFilterAttribute : AuthorizationFilterAttribute
     {
+
         /// <summary>
         /// 接口统一授权
         /// </summary>
@@ -117,7 +118,6 @@ namespace APIExample.Filter
                     StreamReader reader = new StreamReader(stream);
                     var requestBody = reader.ReadToEnd();
                     //反序列化
-                    //NLogHelper.Info(actionContext.ActionDescriptor.ActionName + requestBody);
                     var model = JsonHelper.Deserialize<Dictionary<string, object>>(requestBody);
                     if (model != null && model.ContainsKey("token"))
                         token = model["token"].ToString();
@@ -126,7 +126,6 @@ namespace APIExample.Filter
                 {
                     var QueryString = HttpContext.Current.Request.QueryString;
                     string tokenname = "";
-                    string ordernumname = "";
                     foreach (var item in QueryString)
                     {
                         if (item.ToString().IndexOf('.') == -1 && item.ToString().Length == 5)
@@ -146,75 +145,45 @@ namespace APIExample.Filter
                             }
                         }
                     }
-                    //订单编号
-                    foreach (var item in QueryString)
-                    {
-                        if (item.ToString().IndexOf('.') == -1 && item.ToString().Length == 5)
-                        {
-                            if (item.ToString().Contains("ordernum"))
-                            {
-                                ordernumname = item.ToString();
-                            }
-                        }
-                        else
-                        {
-                            var name = item.ToString().Substring(item.ToString().IndexOf('.') + 1);
-                            //为了排除类似info.tokenid这样的参数误导，准确获取info.token
-                            if (name.Contains("ordernum") && name.Length == 8)
-                            {
-                                ordernumname = item.ToString();
-                            }
-                        }
-                    }
                     token = QueryString[tokenname];
-                    string ordernum = QueryString[ordernumname];
                 }
                 //不用的验证Token方法
                 List<string> actionNames = new List<string>() {
-                    "UsersLogin", "UsersRegister","SendVerificationCode", "AlipayRequstPost", "WxpayRequstPost", "Version",
-                     "thirdOpenID", "SendThirdVerificationCode","ThirdRegister","GetAndroidVersionInfo","GetSkillList","GetAllSkillCatas",
-                     "CheckMsgByPhone","GetAllSkillCatasIos"
+                    "login"
                 };
                 if (!actionNames.Contains(actionName))
                 {
-                    //using (cyEntities entities = new cyEntities())
+                    //ISysUserRepository _sysUserRepository = new SysUserRepository();
+                    //var userInfo = _sysUserRepository.GetUserInfoByToken(token); //验证token是否存在
+
+                    //if (userInfo == null) 
                     //{
-                    //    entities.Configuration.LazyLoadingEnabled = false;
-                    //    entities.Configuration.ProxyCreationEnabled = false;
-                    //    entities.Configuration.AutoDetectChangesEnabled = false;
-                    //    var userid = "";
-                    //    //token校验结果 
-                    //    int check = 0;
-                    //    try
-                    //    {
-                    //        check = CheckToken(token, entities, ref userid);
-                    //    }
-                    //    catch (Exception e)
-                    //    {
-                    //        Thread.Sleep(300); //停一秒
-                    //        check = CheckToken(token, entities, ref userid);
-                    //        NLogHelper.Error(null, e);
-                    //    }
-                    //    actionContext.Request.Properties["userid"] = userid;
-                    //    //token不存在
-                    //    if (check == 2)
+                    //    CommonAPIResult<bool> response = new CommonAPIResult<bool>();
+                    //    response.code = (short)MessageDict.TokenNon;
+                    //    response.errMsg = "Token不存在";
+                    //    string result = JsonConvert.SerializeObject(response);
+                    //    actionContext.Response = actionContext.Request.CreateResponse(response);
+                    //    actionContext.Request.Properties["userid"] = "";
+                    //}
+                    //else
+                    //{
+                    //    var tokenTime = userInfo.tokenExpirationDate; //token失效日期
+
+                    //    if (1 == 1)
                     //    {
                     //        CommonAPIResult<bool> response = new CommonAPIResult<bool>();
-                    //        response.errCode = (short)MessageDict.TokenNon;
-                    //        response.errMsg = "Token不存在";
-                    //        string result = JsonConvert.SerializeObject(response);
-                    //        actionContext.Response = actionContext.Request.CreateResponse(response);
-                    //        actionContext.Request.Properties["userid"] = "";
-                    //    }
-                    //    //token已经失效
-                    //    else if (check == 1)
-                    //    {
-                    //        CommonAPIResult<bool> response = new CommonAPIResult<bool>();
-                    //        response.errCode = (short)MessageDict.TokenInvalid;
+                    //        response.code = (short)MessageDict.TokenInvalid;
                     //        response.errMsg = "Token已过期";
                     //        string result = JsonConvert.SerializeObject(response);
                     //        actionContext.Response = actionContext.Request.CreateResponse(response);
-                    //        actionContext.Request.Properties["userid"] = "";
+                    //        actionContext.Request.Properties["userId"] = "";
+                    //        actionContext.Request.Properties["userName"] = "";
+                    //    }
+
+                    //    else
+                    //    {
+                    //        actionContext.Request.Properties["userId"] = userInfo.userId;
+                    //        actionContext.Request.Properties["userName"] = userInfo.userName;
                     //    }
                     //}
                 }

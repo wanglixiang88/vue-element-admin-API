@@ -7,3 +7,12 @@ E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Hel
 E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.csproj.CopyComplete
 E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.dll
 E:\WorkCode\WangLixiang\APIExample\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.pdb
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\bin\Debug\ToolLibrary.Helper.dll
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\bin\Debug\ToolLibrary.Helper.pdb
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\bin\Debug\Newtonsoft.Json.dll
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\bin\Debug\Newtonsoft.Json.xml
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.csprojAssemblyReference.cache
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.csproj.CoreCompileInputs.cache
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.csproj.CopyComplete
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.dll
+E:\test_vue\demoAdmin\vue-element-admin-API\ToolLibrary.Helper1\obj\Debug\ToolLibrary.Helper.pdb

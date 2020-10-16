@@ -1,4 +1,5 @@
 ﻿
+using IVueElementAdminRepository;
 using IVueElementAdminServices;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,13 @@ using System.Text;
 
 namespace VueElementAdminServices
 {
-    class SysUserServices: ISysUserServices
+    public class SysUserServices : ISysUserServices
     {
+
+        ISysUserRepository _sysUserRepository;
+        public SysUserServices(ISysUserRepository sysUserRepository)
+        {
+            _sysUserRepository = sysUserRepository;
+        }
     }
 }

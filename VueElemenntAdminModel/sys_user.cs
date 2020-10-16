@@ -4,7 +4,7 @@ using System.Text;
 
 namespace vueElementAdmin.Model
 {
-    class sys_user
+    public class sys_user
     {
         /// <summary>
         /// 用户ID guid 唯一
@@ -25,6 +25,11 @@ namespace vueElementAdmin.Model
         /// 用户token
         /// </summary>
         public string userToken { get; set; }
+
+        /// <summary>
+        /// token失效日期
+        /// </summary>
+        public DateTime? tokenExpirationDate { get; set; }
 
         /// <summary>
         /// 是否无效 0.有效 1.无效
