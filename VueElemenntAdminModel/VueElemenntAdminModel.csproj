@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sys_user.cs" />
+    <Compile Include="MySqlModel\sys_user.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="APIModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

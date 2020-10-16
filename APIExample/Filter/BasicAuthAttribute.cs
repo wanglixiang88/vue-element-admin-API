@@ -1,5 +1,6 @@
 ﻿using APIExample.Engine;
 using APIExample.Models;
+using IVueElememtAdminRepository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using ToolLibrary.Helper;
+using VueElememtAdminRepository;
 
 namespace APIExample.Filter
 {
@@ -94,7 +96,6 @@ namespace APIExample.Filter
     /// </summary>
     public class AuthFilterAttribute : AuthorizationFilterAttribute
     {
-
         /// <summary>
         /// 接口统一授权
         /// </summary>
@@ -153,138 +154,54 @@ namespace APIExample.Filter
                 };
                 if (!actionNames.Contains(actionName))
                 {
-                    //ISysUserRepository _sysUserRepository = new SysUserRepository();
-                    //var userInfo = _sysUserRepository.GetUserInfoByToken(token); //验证token是否存在
+                    ISysUserRepository _sysUserRepository = new SysUserRepository();
+                    var userInfo = _sysUserRepository.GetUserInfoByToken(token); //验证token是否存在
 
-                    //if (userInfo == null) 
-                    //{
-                    //    CommonAPIResult<bool> response = new CommonAPIResult<bool>();
-                    //    response.code = (short)MessageDict.TokenNon;
-                    //    response.errMsg = "Token不存在";
-                    //    string result = JsonConvert.SerializeObject(response);
-                    //    actionContext.Response = actionContext.Request.CreateResponse(response);
-                    //    actionContext.Request.Properties["userid"] = "";
-                    //}
-                    //else
-                    //{
-                    //    var tokenTime = userInfo.tokenExpirationDate; //token失效日期
-
-                    //    if (1 == 1)
-                    //    {
-                    //        CommonAPIResult<bool> response = new CommonAPIResult<bool>();
-                    //        response.code = (short)MessageDict.TokenInvalid;
-                    //        response.errMsg = "Token已过期";
-                    //        string result = JsonConvert.SerializeObject(response);
-                    //        actionContext.Response = actionContext.Request.CreateResponse(response);
-                    //        actionContext.Request.Properties["userId"] = "";
-                    //        actionContext.Request.Properties["userName"] = "";
-                    //    }
-
-                    //    else
-                    //    {
-                    //        actionContext.Request.Properties["userId"] = userInfo.userId;
-                    //        actionContext.Request.Properties["userName"] = userInfo.userName;
-                    //    }
-                    //}
+                    if (userInfo == null)
+                    {
+                        CommonAPIResult<bool> response = new CommonAPIResult<bool>();
+                        response.code = (short)MessageDict.TokenNon;
+                        response.errMsg = "Token不存在";
+                        string result = JsonConvert.SerializeObject(response);
+                        actionContext.Response = actionContext.Request.CreateResponse(response);
+                        actionContext.Request.Properties["userId"] = "";
+                        actionContext.Request.Properties["userName"] = "";
+                    }
+                    else
+                    {
+                        var tokenTime = userInfo.tokenExpirationDate; //token失效日期
+                        if (tokenTime.HasValue)
+                        {
+                            if (tokenTime.Value.CompareTo(DateTime.Now) < 0) 
+                            {
+                                CommonAPIResult<bool> response = new CommonAPIResult<bool>();
+                                response.code = (short)MessageDict.TokenInvalid;
+                                response.errMsg = "Token已过期";
+                                string result = JsonConvert.SerializeObject(response);
+                                actionContext.Response = actionContext.Request.CreateResponse(response);
+                                actionContext.Request.Properties["userId"] = "";
+                                actionContext.Request.Properties["userName"] = "";
+                            }
+                            else
+                            {
+                                actionContext.Request.Properties["userId"] = userInfo.userId;
+                                actionContext.Request.Properties["userName"] = userInfo.userName;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                var actionName = actionContext.ActionDescriptor.ActionName;
-                if (actionName != "GetOrderList")
-                {
-                    CommonResult<bool> response = new CommonResult<bool>();
-                    response.bSucceed = false;
-                    response.errCode = (int)MessageDict.Failed;
-                    response.errMsg = "接口访问统一入口请求异常" + ex.ToString();
-                    string result = JsonConvert.SerializeObject(response);
-                    actionContext.Response = actionContext.Request.CreateResponse(response);
-                }
-                //NLogHelper.Error(null, ex.ToString());
+                CommonResult<bool> response = new CommonResult<bool>();
+                response.bSucceed = false;
+                response.errCode = (int)MessageDict.Failed;
+                response.errMsg = "接口访问统一入口请求异常" + ex.ToString();
+                string result = JsonConvert.SerializeObject(response);
+                actionContext.Response = actionContext.Request.CreateResponse(response);
             }
         }
 
-        /// <summary>
-        /// 使用数据库和redis相互结合查询token减轻查询压力防止报错
-        /// </summary>
-        /// <param name="token1"></param>
-        /// <param name="entities"></param>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        //private int CheckToken(string token1, cyEntities entities, ref string userid)
-        //{
-        //    //首先去redis查询token是否存在
-        //    string redisUserInfo = RedisServiceConfig.Instance.Get<string>(token1);
-        //    if (!string.IsNullOrWhiteSpace(redisUserInfo))
-        //    {
-        //        userid = redisUserInfo;
-        //        return 0;//表示通过
-        //    }
-        //    else//redis中不存在或者未注册
-        //    {
-        //        //查数据库验证
-        //        int checkResult = 0;
-        //        var token = entities.tokens.Where(t => t.token1 == token1).FirstOrDefault();
-        //        if (token != null)
-        //        {
-        //            userid = token.userid;
-        //            var time = DateTime.Now - token.createtime;
-        //            if (time > new TimeSpan(30, 0, 0, 0))
-        //            {
-        //                checkResult = 1;
-        //            }
-        //            else//数据库存在并且未过期时 注册redis 方便以后重复查询
-        //            {
-        //                RedisServiceConfig.Instance.Set(token.token1, userid, 43200);//设置一个月的过期时间
-        //            }
-        //        }
-        //        else
-        //        {
-        //            checkResult = 2;
-        //        }
-        //        return checkResult;
-        //    }
-        //}
-
-        //private string GetUserId(string token1, cyEntities entities)
-        //{
-        //    string userid = "";
-        //    var token = entities.tokens.Where(t => t.token1 == token1).FirstOrDefault();
-        //    if (token != null)
-        //    {
-        //        userid = token.userid;
-        //    }
-        //    return userid;
-
-        //}
-
-        //private int CheckOrder(string ordernum, string userid, cyEntities entities)
-        //{
-        //    int checkResult = 0;
-        //    if (string.IsNullOrWhiteSpace(ordernum))
-        //    {
-        //        return 1;
-        //    }
-        //    var order = entities.Orders.Where(t => t.ordernum == ordernum).FirstOrDefault();
-
-        //    if (order != null)
-        //    {
-        //        if (order.buyer.Contains(userid) || order.sellers.Contains(userid))
-        //        {
-        //            checkResult = 1;
-        //        }
-        //        else
-        //        {
-        //            checkResult = 0;
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        checkResult = 0;
-        //    }
-        //    return checkResult;
-        //}
     }
 
 }

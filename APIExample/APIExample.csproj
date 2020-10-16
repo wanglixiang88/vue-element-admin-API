@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>APIExample</RootNamespace>
     <AssemblyName>APIExample</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -66,9 +66,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -216,9 +216,21 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IVueElememtAdminRepository\IVueElememtAdminRepository.csproj">
+      <Project>{6dc5b742-6397-4d83-8475-18a26d5e26d3}</Project>
+      <Name>IVueElememtAdminRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToolLibrary.Helper1\ToolLibrary.Helper.csproj">
       <Project>{5fdf67d1-724e-497e-b05d-e0406f5894f4}</Project>
       <Name>ToolLibrary.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VueElememtAdminRepository\VueElememtAdminRepository.csproj">
+      <Project>{c146db3d-ec21-4f1d-ab00-1b76f6c3c57e}</Project>
+      <Name>VueElememtAdminRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VueElemenntAdminModel\VueElemenntAdminModel.csproj">
+      <Project>{d98fa6ec-7373-4875-a8bd-d69bd34fc69d}</Project>
+      <Name>VueElemenntAdminModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

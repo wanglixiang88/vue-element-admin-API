@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace vueElementAdmin.Model
+namespace vueElementAdminModel.MySqlModel
 {
     public class sys_user
     {
