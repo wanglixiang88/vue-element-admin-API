@@ -42,6 +42,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfoServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IVueElememtAdminRepository\IVueElememtAdminRepository.csproj">
+      <Project>{6DC5B742-6397-4D83-8475-18A26D5E26D3}</Project>
+      <Name>IVueElememtAdminRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IVueElementAdminServices\IVueElementAdminServices.csproj">
+      <Project>{2D392B28-F9B8-4A28-9557-EEC5E19756FF}</Project>
+      <Name>IVueElementAdminServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolLibrary.Helper1\ToolLibrary.Helper.csproj">
+      <Project>{5fdf67d1-724e-497e-b05d-e0406f5894f4}</Project>
+      <Name>ToolLibrary.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VueElemenntAdminModel\VueElemenntAdminModel.csproj">
+      <Project>{D98FA6EC-7373-4875-A8BD-D69BD34FC69D}</Project>
+      <Name>VueElemenntAdminModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

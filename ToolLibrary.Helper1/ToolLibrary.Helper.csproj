@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\ConfigHelper.cs" />
+    <Compile Include="Helper\EncryptHelper.cs" />
     <Compile Include="Json\IsoDateTimeConverterContent.cs" />
     <Compile Include="Json\JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

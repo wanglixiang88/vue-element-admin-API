@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>APIExample</RootNamespace>
     <AssemblyName>APIExample</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIBusiness\UsersBusiness.cs" />
+    <Compile Include="APIControllers\UserInfoController.cs" />
     <Compile Include="APIControllers\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -144,14 +145,10 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Engine\CommonResult.cs" />
-    <Compile Include="Engine\CommonAPIResult.cs" />
     <Compile Include="Filter\BasicAuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MessageDict.cs" />
-    <Compile Include="Models\MobileBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\UserInfo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -220,6 +218,10 @@
       <Project>{6dc5b742-6397-4d83-8475-18a26d5e26d3}</Project>
       <Name>IVueElememtAdminRepository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IVueElementAdminServices\IVueElementAdminServices.csproj">
+      <Project>{2D392B28-F9B8-4A28-9557-EEC5E19756FF}</Project>
+      <Name>IVueElementAdminServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToolLibrary.Helper1\ToolLibrary.Helper.csproj">
       <Project>{5fdf67d1-724e-497e-b05d-e0406f5894f4}</Project>
       <Name>ToolLibrary.Helper</Name>
@@ -231,6 +233,10 @@
     <ProjectReference Include="..\VueElemenntAdminModel\VueElemenntAdminModel.csproj">
       <Project>{d98fa6ec-7373-4875-a8bd-d69bd34fc69d}</Project>
       <Name>VueElemenntAdminModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VueElementAdminServices\VueElementAdminServices.csproj">
+      <Project>{9822799D-DDE3-44C3-B302-87F1968C01C5}</Project>
+      <Name>VueElementAdminServices</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,6 +1,4 @@
-﻿using APIExample.Engine;
-using APIExample.Models;
-using IVueElememtAdminRepository;
+﻿using IVueElememtAdminRepository;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,6 +11,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using ToolLibrary.Helper;
 using VueElememtAdminRepository;
+using VueElemenntAdminModel.BaseModel;
 
 namespace APIExample.Filter
 {
@@ -150,7 +149,7 @@ namespace APIExample.Filter
                 }
                 //不用的验证Token方法
                 List<string> actionNames = new List<string>() {
-                    "login"
+                    "login","UserLogin"
                 };
                 if (!actionNames.Contains(actionName))
                 {

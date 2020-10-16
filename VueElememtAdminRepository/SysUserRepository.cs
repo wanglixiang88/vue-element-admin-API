@@ -27,5 +27,32 @@ namespace VueElememtAdminRepository
                 return mysqlConn.Queryable<sys_user>().Where(t => t.userToken.Equals(token)).First();
             }
         }
+
+        /// <summary>
+        /// 用户登录所用，根据用户密码查询用户信息
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <param name="passWord">密码</param>
+        /// <returns></returns>
+        public sys_user GetUserForLogin(string userName, string passWord)
+        {
+            using (mysqlConn)
+            {
+                return mysqlConn.Queryable<sys_user>().Where(t => t.userName.Equals(userName) && t.passWord.Equals(passWord)).First();
+            }
+        }
+
+        /// <summary>
+        /// 更新用户信息
+        /// </summary>
+        /// <param name="sysUser"></param>
+        /// <returns></returns>
+        public int UpdateToken(sys_user sysUser)
+        {
+            using (mysqlConn)
+            {
+                return mysqlConn.Updateable(sysUser).ExecuteCommand();
+            }
+        }
     }
 }

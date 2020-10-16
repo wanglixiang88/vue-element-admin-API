@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using VueElemenntAdminModel.BaseModel;
 
 namespace APIExample.APIControllers
 {
@@ -68,7 +69,7 @@ namespace APIExample.APIControllers
             CommonAPIResult<userToken> commonAPI = new CommonAPIResult<userToken>();
             userToken userToken = new userToken();
             userToken.token = "admin-token";
-            commonAPI.UpdateStatus(userToken, Models.MessageDict.Ok, "1");
+            commonAPI.UpdateStatus(userToken, MessageDict.Ok, "1");
             return commonAPI;
         }
 
@@ -88,7 +89,7 @@ namespace APIExample.APIControllers
             userInfo.introduction = "11111111111222222";
             userInfo.name = "Super Adminguanli";
             userInfo.avatar = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif";
-            commonAPI.UpdateStatus(userInfo, Models.MessageDict.Ok, "成功！");
+            commonAPI.UpdateStatus(userInfo, MessageDict.Ok, "成功！");
             return commonAPI;
 
         }
@@ -113,7 +114,7 @@ namespace APIExample.APIControllers
                 menu1s.Add(menu11);
             }
             menu1.menuList = menu1s;
-            commonAPI.UpdateStatus(menu1, Models.MessageDict.Ok, "成功！");
+            commonAPI.UpdateStatus(menu1, MessageDict.Ok, "成功！");
             return commonAPI;
         }
 
@@ -141,7 +142,7 @@ namespace APIExample.APIControllers
             menu1.total = 8;
             menu1.item = userInfo;
 
-            commonAPI.UpdateStatus(menu1, Models.MessageDict.Ok, "成功！");
+            commonAPI.UpdateStatus(menu1, MessageDict.Ok, "成功！");
             return commonAPI;
         }
 

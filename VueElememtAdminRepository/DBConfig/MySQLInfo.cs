@@ -16,7 +16,6 @@ namespace VueElememtAdminRepository.DBConfig
         /// <returns></returns>
         public static SqlSugarClient mySqlSugarClient()
         {
-            var stringa = ConfigHelper.AppSettings("mySql_VueElementAdmin");
             SqlSugarClient Db = new SqlSugarClient(new ConnectionConfig()
             {
                 ConnectionString = ConfigHelper.AppSettings("mySql_VueElementAdmin"),//数据库连接串

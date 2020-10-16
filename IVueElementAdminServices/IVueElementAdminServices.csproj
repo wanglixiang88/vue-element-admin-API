@@ -42,6 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IUserInfoServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VueElemenntAdminModel\VueElemenntAdminModel.csproj">
+      <Project>{D98FA6EC-7373-4875-A8BD-D69BD34FC69D}</Project>
+      <Name>VueElemenntAdminModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
