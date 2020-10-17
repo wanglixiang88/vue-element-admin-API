@@ -1,12 +1,14 @@
 ﻿using APIExample.Filter;
+using IVueElememtAdminRepository;
 using IVueElementAdminServices;
 using System.Web.Http;
+using VueElememtAdminRepository;
 using VueElemenntAdminModel.APIModel;
 using VueElemenntAdminModel.BaseModel;
+using VueElementAdminServices;
 
 namespace APIExample.APIControllers
 {
-
     /// <summary>
     /// UserInfo
     /// </summary>
@@ -14,17 +16,8 @@ namespace APIExample.APIControllers
     [RoutePrefix("API/UserInfo")]
     public class UserInfoController : ApiController
     {
-
-        IUserInfoServices _userInfoServices;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="userInfoServices"></param>
-        public UserInfoController(IUserInfoServices userInfoServices)
-        {
-            _userInfoServices = userInfoServices;
-        }
+        private readonly static ISysUserRepository _sysUserRepository = new SysUserRepository();
+        private readonly IUserInfoServices _userInfoServices = new UserInfoServices(_sysUserRepository);
 
         /// <summary>
         /// 用户登录
@@ -34,8 +27,7 @@ namespace APIExample.APIControllers
         [HttpPost]
         public CommonAPIResult<UserLoginRes> UserLogin([FromBody]UserLoginReq userLoginReq)
         {
-            return new CommonAPIResult<UserLoginRes>();
-            //return _userInfoServices.UserLogin(userLoginReq);
+            return _userInfoServices.UserLogin(userLoginReq);
         }
 
     }

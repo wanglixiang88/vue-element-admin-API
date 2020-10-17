@@ -11,6 +11,10 @@ namespace VueElementAdminServices
     {
 
         private readonly ISysUserRepository _sysUserRepository;
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public UserInfoServices(ISysUserRepository sysUserRepository)
         {
             _sysUserRepository = sysUserRepository;
@@ -69,7 +73,7 @@ namespace VueElementAdminServices
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 commonAPIResult.UpdateStatus(null, MessageDict.SystemUnkonw, "系统异常，请联系管理员！" + ex.Message);
                 return commonAPIResult;
