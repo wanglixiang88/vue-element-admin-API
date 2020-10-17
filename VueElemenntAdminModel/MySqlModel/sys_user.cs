@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +10,8 @@ namespace vueElementAdminModel.MySqlModel
         /// <summary>
         /// 用户ID guid 唯一
         /// </summary>
-        public string userId { get; set; }
+        [SugarColumn(IsPrimaryKey = true)]
+        public long userId { get; set; }
 
         /// <summary>
         /// 用户名

@@ -55,7 +55,7 @@ namespace VueElementAdminServices
                 else
                 {
                     userInfo.tokenExpirationDate = DateTime.Now.AddDays(30);
-                    userInfo.userToken = Guid.NewGuid().ToString();
+                    userInfo.userToken = Guid.NewGuid().ToString("N");
                     var i = _sysUserRepository.UpdateToken(userInfo); //更新token
                     if (i > 0)
                     {
