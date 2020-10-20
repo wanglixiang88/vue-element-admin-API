@@ -39,6 +39,21 @@ namespace vueElementAdminModel.MySqlModel
         public int isValid { get; set; }
 
         /// <summary>
+        /// 用户所使用的的角色ID
+        /// </summary>
+        public int roleId { get; set; }
+
+        /// <summary>
+        /// 头像路径
+        /// </summary>
+        public string avatar { get; set; }
+
+        /// <summary>
+        /// 自我介绍
+        /// </summary>
+        public string introduction { get; set; }
+
+        /// <summary>
         /// 创建人ID
         /// </summary>
         public string createUserId { get; set; }
@@ -67,5 +82,6 @@ namespace vueElementAdminModel.MySqlModel
         ///更新时间
         /// </summary>
         public DateTime? updateTime { get; set; }
+
     }
 }

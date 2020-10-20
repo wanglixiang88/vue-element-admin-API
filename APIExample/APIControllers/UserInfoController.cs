@@ -30,5 +30,19 @@ namespace APIExample.APIControllers
             return _userInfoServices.UserLogin(userLoginReq);
         }
 
+        /// <summary>
+        /// 获取用户详细信息
+        /// </summary>
+        /// <param name="userDetailReq"></param>
+        /// <returns></returns>
+        [Route("GetUserDetail")]
+        [HttpPost]
+        public CommonAPIResult<UserDetailRes> GetUserDetail([FromBody]UserDetailReq userDetailReq)
+        {
+            userDetailReq.userToken = "";
+            userDetailReq.userId = "";
+            userDetailReq.userName = "";
+            return _userInfoServices.GetUserDetail(userDetailReq);
+        }
     }
 }

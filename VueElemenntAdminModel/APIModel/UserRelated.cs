@@ -13,7 +13,7 @@ namespace VueElemenntAdminModel.APIModel
     {
     }
 
-    #region
+    #region /UserInfo/UserLogin
 
     /// <summary>
     /// 用户登录请求的参数
@@ -42,4 +42,42 @@ namespace VueElemenntAdminModel.APIModel
 
     #endregion
 
+    #region /UserInfo/GetUserDetail
+
+
+    /// <summary>
+    /// 获取用户详细信息请求的参数
+    /// </summary>
+    public class UserDetailReq: BaseInfo
+    {
+
+    }
+
+    /// <summary>
+    /// 获取用户详细信息返回的参数
+    /// </summary>
+    public class UserDetailRes
+    {
+        /// <summary>
+        ///用户姓名
+        /// </summary>
+        public int userName { get; set; }
+
+        /// <summary>
+        /// 角色ID
+        /// </summary>
+        public int roleId { get; set; }
+
+        /// <summary>
+        /// 自我介绍
+        /// </summary>
+        public string introduction { get; set; }
+
+        /// <summary>
+        /// 头像
+        /// </summary>
+        public int avatar { get; set; }
+    }
+
+    #endregion
 }
