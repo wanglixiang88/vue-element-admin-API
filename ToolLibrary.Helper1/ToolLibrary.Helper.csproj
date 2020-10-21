@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\AutoMapper.cs" />
     <Compile Include="Helper\ConfigHelper.cs" />
     <Compile Include="Helper\EncryptHelper.cs" />
     <Compile Include="Json\IsoDateTimeConverterContent.cs" />

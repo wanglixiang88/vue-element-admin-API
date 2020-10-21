@@ -16,5 +16,12 @@ namespace IVueElementAdminServices
         /// <param name="userLoginReq"></param>
         /// <returns></returns>
         CommonAPIResult<UserLoginRes> UserLogin(UserLoginReq userLoginReq);
+
+        /// <summary>
+        /// 获取用户详细信息
+        /// </summary>
+        /// <param name="userDetailReq"></param>
+        /// <returns></returns>
+        CommonAPIResult<UserDetailRes> GetUserDetail(UserDetailReq userDetailReq);
     }
 }

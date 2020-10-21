@@ -81,5 +81,16 @@ namespace VueElementAdminServices
 
         }
 
+
+        /// <summary>
+        /// 获取用户详细信息
+        /// </summary>
+        /// <param name="userDetailReq"></param>
+        /// <returns></returns>
+        public CommonAPIResult<UserDetailRes> GetUserDetail(UserDetailReq userDetailReq)
+        {
+            return new CommonAPIResult<UserDetailRes>();
+        }
+
     }
 }
