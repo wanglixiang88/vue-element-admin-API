@@ -4,6 +4,7 @@ using VueElemenntAdminModel.APIModel;
 using VueElemenntAdminModel.BaseModel;
 using ToolLibrary.Helper.Helper;
 using System;
+using vueElementAdminModel.MySqlModel;
 
 namespace VueElementAdminServices
 {
@@ -89,7 +90,18 @@ namespace VueElementAdminServices
         /// <returns></returns>
         public CommonAPIResult<UserDetailRes> GetUserDetail(UserDetailReq userDetailReq)
         {
-            return new CommonAPIResult<UserDetailRes>();
+            CommonAPIResult<UserDetailRes> commonAPIResult = new CommonAPIResult<UserDetailRes>();
+
+            var userInfo = _sysUserRepository.GetUserInfo(userDetailReq.userId); //查询用户是否存在
+            if (userInfo == null)
+            {
+                commonAPIResult.UpdateStatus(null, MessageDict.NoDataExists, "用户不存在");
+            }
+            UserDetailRes userDetailRes = new UserDetailRes();
+            userDetailRes = AutoMapper.To<sys_user, UserDetailRes>(userInfo); //对象转换
+
+            commonAPIResult.UpdateStatus(userDetailRes, MessageDict.Ok, "获取成功");
+            return commonAPIResult;
         }
 
     }

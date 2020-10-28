@@ -31,5 +31,12 @@ namespace IVueElememtAdminRepository
         /// <param name="sysUser"></param>
         /// <returns></returns>
         int UpdateToken(sys_user sysUser);
+
+        /// <summary>
+        /// 获取用户的详细信息
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <returns></returns>
+        sys_user GetUserInfo(long userId);
     }
 }

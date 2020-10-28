@@ -40,7 +40,7 @@ namespace APIExample.APIControllers
         public CommonAPIResult<UserDetailRes> GetUserDetail([FromBody]UserDetailReq userDetailReq)
         {
             userDetailReq.userToken = "";
-            userDetailReq.userId = "";
+            userDetailReq.userId = 0;
             userDetailReq.userName = "";
             return _userInfoServices.GetUserDetail(userDetailReq);
         }

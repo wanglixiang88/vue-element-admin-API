@@ -54,5 +54,19 @@ namespace VueElememtAdminRepository
                 return mysqlConn.Updateable(sysUser).ExecuteCommand();
             }
         }
+
+        /// <summary>
+        /// 根据用户ID获取用户的详细信息
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public sys_user GetUserInfo(long userId)
+        {
+            using (mysqlConn)
+            {
+                return mysqlConn.Queryable<sys_user>().Where(t => t.userId == userId).First();
+            }
+        }
+
     }
 }
