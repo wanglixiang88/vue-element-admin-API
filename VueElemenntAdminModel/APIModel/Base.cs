@@ -24,6 +24,6 @@ namespace VueElemenntAdminModel.APIModel
         /// <summary>
         /// 用户ID
         /// </summary>
-        public long userId { get; set; }
+        public string userId { get; set; }
     }
 }

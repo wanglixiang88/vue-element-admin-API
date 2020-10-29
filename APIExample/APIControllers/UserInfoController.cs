@@ -1,7 +1,10 @@
 ﻿using APIExample.Filter;
 using IVueElememtAdminRepository;
 using IVueElementAdminServices;
+using System;
+using System.Web.Configuration;
 using System.Web.Http;
+using System.Web.Http.Controllers;
 using VueElememtAdminRepository;
 using VueElemenntAdminModel.APIModel;
 using VueElemenntAdminModel.BaseModel;
@@ -33,16 +36,13 @@ namespace APIExample.APIControllers
         /// <summary>
         /// 获取用户详细信息
         /// </summary>
-        /// <param name="userDetailReq"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
         [Route("GetUserDetail")]
-        [HttpPost]
-        public CommonAPIResult<UserDetailRes> GetUserDetail([FromBody]UserDetailReq userDetailReq)
+        [HttpGet]
+        public CommonAPIResult<UserDetailRes> GetUserDetail(string token)
         {
-            userDetailReq.userToken = "";
-            userDetailReq.userId = 0;
-            userDetailReq.userName = "";
-            return _userInfoServices.GetUserDetail(userDetailReq);
+            return _userInfoServices.GetUserDetail(token);
         }
     }
 }

@@ -22,6 +22,6 @@ namespace IVueElementAdminServices
         /// </summary>
         /// <param name="userDetailReq"></param>
         /// <returns></returns>
-        CommonAPIResult<UserDetailRes> GetUserDetail(UserDetailReq userDetailReq);
+        CommonAPIResult<UserDetailRes> GetUserDetail(string token);
     }
 }

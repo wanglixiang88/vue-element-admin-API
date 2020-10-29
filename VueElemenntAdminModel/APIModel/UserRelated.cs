@@ -37,7 +37,7 @@ namespace VueElemenntAdminModel.APIModel
     /// </summary>
     public class UserLoginRes
     {
-        public string userToken { get; set; }
+        public string token { get; set; }
     }
 
     #endregion
@@ -61,12 +61,17 @@ namespace VueElemenntAdminModel.APIModel
         /// <summary>
         ///用户姓名
         /// </summary>
-        public int userName { get; set; }
+        public string userName { get; set; }
 
         /// <summary>
         /// 角色ID
         /// </summary>
         public int roleId { get; set; }
+
+        /// <summary>
+        /// 角色名称
+        /// </summary>
+        public List<string> roles { get; set; }
 
         /// <summary>
         /// 自我介绍
@@ -76,7 +81,8 @@ namespace VueElemenntAdminModel.APIModel
         /// <summary>
         /// 头像
         /// </summary>
-        public int avatar { get; set; }
+        public string avatar { get; set; }
+
     }
 
     #endregion

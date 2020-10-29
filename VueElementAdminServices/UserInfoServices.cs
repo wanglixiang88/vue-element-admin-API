@@ -5,6 +5,7 @@ using VueElemenntAdminModel.BaseModel;
 using ToolLibrary.Helper.Helper;
 using System;
 using vueElementAdminModel.MySqlModel;
+using System.Collections.Generic;
 
 namespace VueElementAdminServices
 {
@@ -61,7 +62,7 @@ namespace VueElementAdminServices
                     if (i > 0)
                     {
                         UserLoginRes userLoginRes = new UserLoginRes();
-                        userLoginRes.userToken = userInfo.userToken; //设置返回到页面的token
+                        userLoginRes.token = userInfo.userToken; //设置返回到页面的token
 
                         commonAPIResult.UpdateStatus(userLoginRes, MessageDict.Ok, "登录成功！");
                         return commonAPIResult;
@@ -88,17 +89,21 @@ namespace VueElementAdminServices
         /// </summary>
         /// <param name="userDetailReq"></param>
         /// <returns></returns>
-        public CommonAPIResult<UserDetailRes> GetUserDetail(UserDetailReq userDetailReq)
+        public CommonAPIResult<UserDetailRes> GetUserDetail(string token)
         {
             CommonAPIResult<UserDetailRes> commonAPIResult = new CommonAPIResult<UserDetailRes>();
 
-            var userInfo = _sysUserRepository.GetUserInfo(userDetailReq.userId); //查询用户是否存在
+            var userInfo = _sysUserRepository.GetUserInfoByToken(token); //查询用户是否存在
             if (userInfo == null)
             {
                 commonAPIResult.UpdateStatus(null, MessageDict.NoDataExists, "用户不存在");
             }
             UserDetailRes userDetailRes = new UserDetailRes();
             userDetailRes = AutoMapper.To<sys_user, UserDetailRes>(userInfo); //对象转换
+
+            var aa = new List<string>();
+            aa.Add("admin");
+            userDetailRes.roles = aa;
 
             commonAPIResult.UpdateStatus(userDetailRes, MessageDict.Ok, "获取成功");
             return commonAPIResult;

@@ -124,7 +124,7 @@ namespace APIExample.Filter
                 }
                 else
                 {
-                    var QueryString = HttpContext.Current.Request.QueryString;
+                    var QueryString = HttpContext.Current.Request.Headers;
                     string tokenname = "";
                     foreach (var item in QueryString)
                     {
@@ -149,7 +149,7 @@ namespace APIExample.Filter
                 }
                 //不用的验证Token方法
                 List<string> actionNames = new List<string>() {
-                    "login","UserLogin"
+                    "login","UserLogin","GetUserDetail"
                 };
                 if (!actionNames.Contains(actionName))
                 {
