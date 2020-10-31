@@ -26,4 +26,24 @@ namespace VueElemenntAdminModel.APIModel
         /// </summary>
         public string userId { get; set; }
     }
+
+
+    /// <summary>
+    /// 列表返回的数据，必须包上这一层
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class BaseTable<T>
+    {
+        public int count { get; set; }
+
+        public T item { get; set; }
+    }
+
+    public class TableParame
+    {
+        public int page { get; set; }
+
+        public int limit { get; set; }
+    }
+
 }

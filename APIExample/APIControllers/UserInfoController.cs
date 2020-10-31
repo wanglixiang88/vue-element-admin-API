@@ -44,5 +44,17 @@ namespace APIExample.APIControllers
         {
             return _userInfoServices.GetUserDetail(token);
         }
+
+
+        /// <summary>
+        /// 获取
+        /// </summary>
+        /// <returns></returns>
+        //[Route("GetUserInfoList")]
+        //[HttpGet]
+        //public CommonAPIResult<BaseTable<UserDetailRes>> GetUserInfoList()
+        //{
+
+        //}
     }
 }
