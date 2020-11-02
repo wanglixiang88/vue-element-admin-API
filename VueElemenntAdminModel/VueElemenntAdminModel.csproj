@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="SqlSugar, Version=5.0.0.19, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\sqlSugar.5.0.0.19\lib\SqlSugar.dll</HintPath>
     </Reference>
@@ -46,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIModel\Base.cs" />
+    <Compile Include="APIModel\Condition.cs" />
     <Compile Include="APIModel\UserRelated.cs" />
     <Compile Include="BaseModel\CommonAPIResult.cs" />
     <Compile Include="BaseModel\CommonResult.cs" />
@@ -54,7 +58,14 @@
     <Compile Include="MySqlModel\sys_user.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToolLibrary.Helper1\ToolLibrary.Helper.csproj">
+      <Project>{5fdf67d1-724e-497e-b05d-e0406f5894f4}</Project>
+      <Name>ToolLibrary.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

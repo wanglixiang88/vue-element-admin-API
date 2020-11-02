@@ -50,11 +50,11 @@ namespace APIExample.APIControllers
         /// 获取
         /// </summary>
         /// <returns></returns>
-        //[Route("GetUserInfoList")]
-        //[HttpGet]
-        //public CommonAPIResult<BaseTable<UserDetailRes>> GetUserInfoList()
-        //{
-
-        //}
+        [Route("GetUserInfoList")]
+        [HttpGet]
+        public CommonAPIResult<BaseTable<UserDetailRes>> GetUserInfoList()
+        {
+            return _userInfoServices.GetUserDetail(token);
+        }
     }
 }
