@@ -52,9 +52,9 @@ namespace APIExample.APIControllers
         /// <returns></returns>
         [Route("GetUserInfoList")]
         [HttpGet]
-        public CommonAPIResult<BaseTable<UserDetailRes>> GetUserInfoList()
+        public CommonAPIResult<UserDetailRes> GetUserInfoList()
         {
-            return _userInfoServices.GetUserDetail(token);
+            return _userInfoServices.GetUserDetail("");
         }
     }
 }
