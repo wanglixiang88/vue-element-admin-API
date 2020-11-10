@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VueElemenntAdminModel.APIModel;
 using vueElementAdminModel.MySqlModel;
 
 namespace IVueElememtAdminRepository
@@ -38,5 +39,13 @@ namespace IVueElememtAdminRepository
         /// <param name="userId">用户ID</param>
         /// <returns></returns>
         sys_user GetUserInfo(long userId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameterJson"></param>
+        /// <param name="tableParame"></param>
+        /// <returns></returns>
+        IEnumerable<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame);
     }
 }

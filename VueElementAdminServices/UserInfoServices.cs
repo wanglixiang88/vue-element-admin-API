@@ -6,6 +6,7 @@ using ToolLibrary.Helper.Helper;
 using System;
 using vueElementAdminModel.MySqlModel;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VueElementAdminServices
 {
@@ -109,5 +110,15 @@ namespace VueElementAdminServices
             return commonAPIResult;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameterJson"></param>
+        /// <param name="tableParame"></param>
+        /// <returns></returns>
+        public List<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame)
+        {
+            return _sysUserRepository.GetUserInfoList(parameterJson, ref tableParame).ToList();
+        }
     }
 }

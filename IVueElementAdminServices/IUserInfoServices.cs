@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VueElemenntAdminModel.APIModel;
 using VueElemenntAdminModel.BaseModel;
+using vueElementAdminModel.MySqlModel;
 
 namespace IVueElementAdminServices
 {
@@ -23,5 +24,11 @@ namespace IVueElementAdminServices
         /// <param name="userDetailReq"></param>
         /// <returns></returns>
         CommonAPIResult<UserDetailRes> GetUserDetail(string token);
+
+        /// <summary>
+        /// 获取列表信息
+        /// </summary>
+        /// <returns></returns>
+        List<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame);
     }
 }

@@ -47,13 +47,14 @@ namespace APIExample.APIControllers
 
 
         /// <summary>
-        /// 获取
+        /// 获取用户列表
         /// </summary>
         /// <returns></returns>
         [Route("GetUserInfoList")]
         [HttpGet]
-        public CommonAPIResult<UserDetailRes> GetUserInfoList()
+        public CommonAPIResult<UserDetailRes> GetUserInfoList(TableParame tableParame)
         {
+            var data = _userInfoServices.GetUserInfoList(tableParame.parameterJson, ref tableParame);
             return _userInfoServices.GetUserDetail("");
         }
     }
