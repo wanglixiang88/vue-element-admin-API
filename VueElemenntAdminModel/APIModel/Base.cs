@@ -45,6 +45,7 @@ namespace VueElemenntAdminModel.APIModel
         public T item { get; set; }
     }
 
+
     /// <summary>
     /// 列表返回请求的参数
     /// </summary>
@@ -59,6 +60,21 @@ namespace VueElemenntAdminModel.APIModel
         /// 每页数量
         /// </summary>
         public int limit { get; set; }
+
+        /// <summary>
+        /// 排序列
+        /// </summary>
+        public string sidx { get; set; }
+
+        /// <summary>
+        /// 排序类型
+        /// </summary>
+        public string sort { get; set; }
+
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int recordsFiltered { get; set; }
 
         /// <summary>
         /// 查询参数

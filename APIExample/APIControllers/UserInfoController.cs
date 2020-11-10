@@ -1,13 +1,12 @@
 ﻿using APIExample.Filter;
 using IVueElememtAdminRepository;
 using IVueElementAdminServices;
-using System;
-using System.Web.Configuration;
+using System.Collections.Generic;
 using System.Web.Http;
-using System.Web.Http.Controllers;
 using VueElememtAdminRepository;
 using VueElemenntAdminModel.APIModel;
 using VueElemenntAdminModel.BaseModel;
+using vueElementAdminModel.MySqlModel;
 using VueElementAdminServices;
 
 namespace APIExample.APIControllers
@@ -51,11 +50,20 @@ namespace APIExample.APIControllers
         /// </summary>
         /// <returns></returns>
         [Route("GetUserInfoList")]
-        [HttpGet]
-        public CommonAPIResult<UserDetailRes> GetUserInfoList(TableParame tableParame)
+        [HttpPost]
+        public CommonAPIResult<BaseTable<List<sys_user>>> GetUserInfoList([FromBody]TableParame tableParame)
         {
+            CommonAPIResult<BaseTable<List<sys_user>>> commonAPIResult = new CommonAPIResult<BaseTable<List<sys_user>>>();
+
             var data = _userInfoServices.GetUserInfoList(tableParame.parameterJson, ref tableParame);
-            return _userInfoServices.GetUserDetail("");
+
+            BaseTable<List<sys_user>> baseTable = new BaseTable<List<sys_user>>();
+            baseTable.item = data;
+            baseTable.count = tableParame.recordsFiltered;
+
+            commonAPIResult.UpdateStatus(baseTable, MessageDict.Ok, "获取成功");
+            return commonAPIResult;
+
         }
     }
 }
