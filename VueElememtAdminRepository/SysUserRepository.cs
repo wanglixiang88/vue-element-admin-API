@@ -16,7 +16,7 @@ using vueElementAdminModel.MySqlModel;
 
 namespace VueElememtAdminRepository
 {
-    public class SysUserRepository : Repository<sys_user> ,ISysUserRepository
+    public class SysUserRepository : Repository<sys_user>, ISysUserRepository
     {
         public SysUserRepository()
         {
@@ -82,7 +82,7 @@ namespace VueElememtAdminRepository
 
 
         /// <summary>
-        /// 
+        /// 获取用户列表
         /// </summary>
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
@@ -90,8 +90,7 @@ namespace VueElememtAdminRepository
         public IEnumerable<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame)
         {
             StringBuilder sql = new StringBuilder();
-            sql.Append(@"  SELECT * FROM  sys_user ");
-
+            sql.Append(@" SELECT * FROM  sys_user where 1=1 ");
             if (!string.IsNullOrEmpty(parameterJson))
             {
                 DynamicParameters ParamList = new DynamicParameters();
@@ -101,6 +100,44 @@ namespace VueElememtAdminRepository
                 return GetMySqlPageList<sys_user>(sql.ToString(), ParamList, ref tableParame);
             }
             return GetMySqlPageList<sys_user>(sql.ToString(), null, ref tableParame);
+        }
+
+
+        /// <summary>
+        /// 保存用户信息
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        public int SaveUserInfo(SaveUserInfoReq saveUserInfoReq)
+        {
+            using (Conn)
+            {
+                return Conn.Execute(@"insert into sys_user(isValid,userName,passWord,roleId,createTime,createUserId,createUserName) values(0,@userName,@passWord,@roleId,@createTime,@createUserId,@createUserName)", new
+                {
+                    userName = saveUserInfoReq.userName,
+                    passWord = saveUserInfoReq.passWord,
+                    roleId = saveUserInfoReq.roleId,
+                    createTime = DateTime.Now,
+                    createUserId = saveUserInfoReq.id,
+                    createUserName = saveUserInfoReq.name
+                });
+            }
+        }
+
+        /// <summary>
+        /// 根据用户姓名获取用户信息
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public sys_user GetUserInfoByUserName(string userName)
+        {
+            using (Conn)
+            {
+                return Conn.QueryFirstOrDefault<sys_user>(@" select * from sys_user where userName=@userName ", new
+                {
+                    userName = userName
+                });
+            }
         }
     }
 }

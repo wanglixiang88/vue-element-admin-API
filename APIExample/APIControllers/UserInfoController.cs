@@ -44,7 +44,6 @@ namespace APIExample.APIControllers
             return _userInfoServices.GetUserDetail(token);
         }
 
-
         /// <summary>
         /// 获取用户列表
         /// </summary>
@@ -59,11 +58,25 @@ namespace APIExample.APIControllers
 
             BaseTable<List<sys_user>> baseTable = new BaseTable<List<sys_user>>();
             baseTable.item = data;
-            baseTable.count = tableParame.recordsFiltered;
+            baseTable.total = tableParame.recordsFiltered;
 
             commonAPIResult.UpdateStatus(baseTable, MessageDict.Ok, "获取成功");
             return commonAPIResult;
+        }
 
+        /// <summary>
+        /// 保存用户详细信息
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        [Route("SaveUserInfo")]
+        [HttpPost]
+        public CommonAPIResult<string> SaveUserInfo([FromBody] SaveUserInfoReq saveUserInfoReq)
+        {
+            saveUserInfoReq.name = Request.Properties["userName"].ToString();
+            saveUserInfoReq.id = Request.Properties["userId"].ToString();
+            saveUserInfoReq.token = Request.Properties["userToken"].ToString();
+            return _userInfoServices.SaveUserInfo(saveUserInfoReq);
         }
     }
 }

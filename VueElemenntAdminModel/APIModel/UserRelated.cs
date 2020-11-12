@@ -86,4 +86,29 @@ namespace VueElemenntAdminModel.APIModel
     }
 
     #endregion
+
+    #region /UserInfo/SaveUserInfo
+
+    /// <summary>
+    /// 保存用户信息请求的参数
+    /// </summary>
+    public class SaveUserInfoReq: BaseInfo
+    {
+        /// <summary>
+        /// 用户姓名
+        /// </summary>
+        public string userName { get; set; }
+
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public string passWord { get; set; }
+
+        /// <summary>
+        /// 角色ID
+        /// </summary>
+        public int roleId { get; set; }
+    }
+
+    #endregion
 }

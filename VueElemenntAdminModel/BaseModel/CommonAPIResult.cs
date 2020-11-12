@@ -26,7 +26,7 @@ namespace VueElemenntAdminModel.BaseModel
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string errMsg { get; set; }
+        public string message { get; set; }
 
         /// <summary>
         /// 返回值实体
@@ -41,11 +41,11 @@ namespace VueElemenntAdminModel.BaseModel
         /// <param name="result"></param>
         /// <param name="messageDict"></param>
         /// <param name="errMsg"></param>
-        public void UpdateStatus(T result, MessageDict messageDict, string errMsg)
+        public void UpdateStatus(T result, MessageDict messageDict, string message)
         {
             this.data = result;
             code = (int)messageDict;
-            this.errMsg = errMsg;
+            this.message = message;
         }
 
         /// <summary>

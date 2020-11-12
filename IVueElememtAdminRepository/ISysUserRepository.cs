@@ -18,6 +18,14 @@ namespace IVueElememtAdminRepository
         /// <returns></returns>
         sys_user GetUserInfoByToken(string token);
 
+
+        /// <summary>
+        /// 根据用户姓名获取用户信息
+        /// </summary>
+        /// <param name="token">token</param>
+        /// <returns></returns>
+        sys_user GetUserInfoByUserName(string userName);
+
         /// <summary>
         /// 用户登录所用，根据用户密码查询用户信息
         /// </summary>
@@ -41,11 +49,18 @@ namespace IVueElememtAdminRepository
         sys_user GetUserInfo(long userId);
 
         /// <summary>
-        /// 
+        /// 查询用户列表
         /// </summary>
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
         /// <returns></returns>
         IEnumerable<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame);
+
+        /// <summary>
+        /// 保存用户信息
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        int SaveUserInfo(SaveUserInfoReq saveUserInfoReq);
     }
 }

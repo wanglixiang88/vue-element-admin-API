@@ -30,5 +30,12 @@ namespace IVueElementAdminServices
         /// </summary>
         /// <returns></returns>
         List<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame);
+
+        /// <summary>
+        /// 保存用户信息
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        CommonAPIResult<string> SaveUserInfo(SaveUserInfoReq saveUserInfoReq);
     }
 }

@@ -73,7 +73,6 @@ namespace VueElementAdminServices
                         commonAPIResult.UpdateStatus(null, MessageDict.SystemUnkonw, "未知错误，更新用户数据异常！");
                         return commonAPIResult;
                     }
-
                 }
             }
             catch (Exception ex)
@@ -81,9 +80,7 @@ namespace VueElementAdminServices
                 commonAPIResult.UpdateStatus(null, MessageDict.SystemUnkonw, "系统异常，请联系管理员！" + ex.Message);
                 return commonAPIResult;
             }
-
         }
-
 
         /// <summary>
         /// 获取用户详细信息
@@ -111,7 +108,7 @@ namespace VueElementAdminServices
         }
 
         /// <summary>
-        /// 
+        /// 获取用户列表
         /// </summary>
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
@@ -119,6 +116,34 @@ namespace VueElementAdminServices
         public List<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame)
         {
             return _sysUserRepository.GetUserInfoList(parameterJson, ref tableParame).ToList();
+        }
+
+        /// <summary>
+        /// 保存用户信息
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        public CommonAPIResult<string> SaveUserInfo(SaveUserInfoReq saveUserInfoReq)
+        {
+            CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
+            var userExit = _sysUserRepository.GetUserInfoByUserName(saveUserInfoReq.userName);
+            if(userExit!=null)
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Failed, "用户已存在！");
+                return commonAPIResult;
+            }
+
+            saveUserInfoReq.passWord = EncryptHelper.MD5Encrypt(Md5Key + saveUserInfoReq.passWord); //密码加密
+            var saveUser = _sysUserRepository.SaveUserInfo(saveUserInfoReq); //查询用户是否存在
+            if (saveUser > 0)
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Ok, "用户新增成功！");
+            }
+            else
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Failed, "用户新增成功！");
+            }
+            return commonAPIResult;
         }
     }
 }

@@ -14,17 +14,17 @@ namespace VueElemenntAdminModel.APIModel
         /// <summary>
         /// 用户token
         /// </summary>
-        public string userToken { get; set; }
+        public string token { get; set; }
 
         /// <summary>
         /// 用户名
         /// </summary>
-        public string userName { get; set; }
+        public string name { get; set; }
 
         /// <summary>
         /// 用户ID
         /// </summary>
-        public string userId { get; set; }
+        public string id { get; set; }
     }
 
 
@@ -37,7 +37,7 @@ namespace VueElemenntAdminModel.APIModel
         /// <summary>
         /// 总条数
         /// </summary>
-        public int count { get; set; }
+        public int total { get; set; }
 
         /// <summary>
         /// 数据集合
@@ -72,14 +72,14 @@ namespace VueElemenntAdminModel.APIModel
         public string sort { get; set; }
 
         /// <summary>
-        /// 总记录数
-        /// </summary>
-        public int recordsFiltered { get; set; }
-
-        /// <summary>
         /// 查询参数
         /// </summary>
         public string parameterJson { get; set; }
+
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int recordsFiltered { get; set; }
     }
 
 }
