@@ -113,9 +113,9 @@ namespace VueElementAdminServices
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        public List<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame)
+        public List<sys_user> GetUserInfoList(ref TableParame tableParame)
         {
-            return _sysUserRepository.GetUserInfoList(parameterJson, ref tableParame).ToList();
+            return _sysUserRepository.GetUserInfoList(ref tableParame).ToList();
         }
 
         /// <summary>

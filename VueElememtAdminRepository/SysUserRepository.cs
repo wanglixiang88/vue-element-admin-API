@@ -87,19 +87,14 @@ namespace VueElememtAdminRepository
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        public IEnumerable<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame)
+        public IEnumerable<sys_user> GetUserInfoList(ref TableParame tableParame)
         {
             StringBuilder sql = new StringBuilder();
             sql.Append(@" SELECT * FROM  sys_user where 1=1 ");
-            if (!string.IsNullOrEmpty(parameterJson))
-            {
-                DynamicParameters ParamList = new DynamicParameters();
-                IList conditions = RequestHelper.UrlDecode(parameterJson).JonsToList<Condition>();
-                string WhereSql = ConditionBuilder.GetWhereSql(conditions, out ParamList);
-                sql.Append(WhereSql);
-                return GetMySqlPageList<sys_user>(sql.ToString(), ParamList, ref tableParame);
-            }
-            return GetMySqlPageList<sys_user>(sql.ToString(), null, ref tableParame);
+            DynamicParameters ParamList = new DynamicParameters();
+            string WhereSql = ConditionBuilder.GetWhereSql(tableParame.parameterJson, out ParamList);
+            sql.Append(WhereSql);
+            return GetMySqlPageList<sys_user>(sql.ToString(), ParamList, ref tableParame);
         }
 
 

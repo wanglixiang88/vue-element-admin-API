@@ -54,8 +54,7 @@ namespace APIExample.APIControllers
         {
             CommonAPIResult<BaseTable<List<sys_user>>> commonAPIResult = new CommonAPIResult<BaseTable<List<sys_user>>>();
 
-            var data = _userInfoServices.GetUserInfoList(tableParame.parameterJson, ref tableParame);
-
+            var data = _userInfoServices.GetUserInfoList(ref tableParame);
             BaseTable<List<sys_user>> baseTable = new BaseTable<List<sys_user>>();
             baseTable.item = data;
             baseTable.total = tableParame.recordsFiltered;

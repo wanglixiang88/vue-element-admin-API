@@ -29,7 +29,7 @@ namespace IVueElementAdminServices
         /// 获取列表信息
         /// </summary>
         /// <returns></returns>
-        List<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame);
+        List<sys_user> GetUserInfoList(ref TableParame tableParame);
 
         /// <summary>
         /// 保存用户信息

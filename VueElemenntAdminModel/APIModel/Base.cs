@@ -74,7 +74,7 @@ namespace VueElemenntAdminModel.APIModel
         /// <summary>
         /// 查询参数
         /// </summary>
-        public string parameterJson { get; set; }
+        public List<Condition> parameterJson { get; set; }
 
         /// <summary>
         /// 总记录数

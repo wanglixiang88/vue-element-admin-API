@@ -54,7 +54,7 @@ namespace IVueElememtAdminRepository
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        IEnumerable<sys_user> GetUserInfoList(string parameterJson, ref TableParame tableParame);
+        IEnumerable<sys_user> GetUserInfoList(ref TableParame tableParame);
 
         /// <summary>
         /// 保存用户信息
