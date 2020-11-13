@@ -90,7 +90,7 @@ namespace VueElememtAdminRepository
         public IEnumerable<sys_user> GetUserInfoList(ref TableParame tableParame)
         {
             StringBuilder sql = new StringBuilder();
-            sql.Append(@" SELECT * FROM  sys_user where 1=1 ");
+            sql.Append(@" SELECT * FROM  sys_user where 1=1 and isDelete=0 ");
             DynamicParameters ParamList = new DynamicParameters();
             string WhereSql = ConditionBuilder.GetWhereSql(tableParame.parameterJson, out ParamList);
             sql.Append(WhereSql);
@@ -107,7 +107,7 @@ namespace VueElememtAdminRepository
         {
             using (Conn)
             {
-                return Conn.Execute(@"insert into sys_user(isValid,userName,passWord,roleId,createTime,createUserId,createUserName) values(0,@userName,@passWord,@roleId,@createTime,@createUserId,@createUserName)", new
+                return Conn.Execute(@"insert into sys_user(isValid,isDelete,userName,passWord,roleId,createTime,createUserId,createUserName) values(0,0,@userName,@passWord,@roleId,@createTime,@createUserId,@createUserName)", new
                 {
                     userName = saveUserInfoReq.userName,
                     passWord = saveUserInfoReq.passWord,
@@ -115,6 +115,25 @@ namespace VueElememtAdminRepository
                     createTime = DateTime.Now,
                     createUserId = saveUserInfoReq.id,
                     createUserName = saveUserInfoReq.name
+                });
+            }
+        }
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        public int  DeleteUser(DeleteUserReq saveUserInfoReq)
+        {
+            using (Conn)
+            {
+                return Conn.Execute(@" update sys_user set isDelete=1,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where userId=@userId ", new
+                {
+                    userId = saveUserInfoReq.userId,
+                    updateTime = DateTime.Now,
+                    updateUserId = saveUserInfoReq.id,
+                    updateUserName = saveUserInfoReq.name
                 });
             }
         }

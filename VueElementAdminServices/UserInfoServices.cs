@@ -126,15 +126,15 @@ namespace VueElementAdminServices
         public CommonAPIResult<string> SaveUserInfo(SaveUserInfoReq saveUserInfoReq)
         {
             CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
-            var userExit = _sysUserRepository.GetUserInfoByUserName(saveUserInfoReq.userName);
-            if(userExit!=null)
+            var userExit = _sysUserRepository.GetUserInfoByUserName(saveUserInfoReq.userName); //查询用户是否存在
+            if (userExit!=null)
             {
                 commonAPIResult.UpdateStatus("", MessageDict.Failed, "用户已存在！");
                 return commonAPIResult;
             }
 
             saveUserInfoReq.passWord = EncryptHelper.MD5Encrypt(Md5Key + saveUserInfoReq.passWord); //密码加密
-            var saveUser = _sysUserRepository.SaveUserInfo(saveUserInfoReq); //查询用户是否存在
+            var saveUser = _sysUserRepository.SaveUserInfo(saveUserInfoReq); //保存用户
             if (saveUser > 0)
             {
                 commonAPIResult.UpdateStatus("", MessageDict.Ok, "用户新增成功！");
@@ -144,6 +144,19 @@ namespace VueElementAdminServices
                 commonAPIResult.UpdateStatus("", MessageDict.Failed, "用户新增成功！");
             }
             return commonAPIResult;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        public CommonAPIResult<string> DeleteUser(DeleteUserReq saveUserInfoReq)
+        {
+            CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
+            var saveUser = _sysUserRepository.DeleteUserInfo(saveUserInfoReq); //保存用户
+
         }
     }
 }

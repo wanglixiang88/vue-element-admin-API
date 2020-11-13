@@ -62,5 +62,12 @@ namespace IVueElememtAdminRepository
         /// <param name="saveUserInfoReq"></param>
         /// <returns></returns>
         int SaveUserInfo(SaveUserInfoReq saveUserInfoReq);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        int DeleteUser(DeleteUserReq saveUserInfoReq);
     }
 }

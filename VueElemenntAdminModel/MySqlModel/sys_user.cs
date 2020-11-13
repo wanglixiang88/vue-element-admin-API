@@ -54,6 +54,11 @@ namespace vueElementAdminModel.MySqlModel
         public string introduction { get; set; }
 
         /// <summary>
+        /// 是否删除 0.未删除 1.已删除
+        /// </summary>
+        public int isDelete { get; set; }
+
+        /// <summary>
         /// 创建人ID
         /// </summary>
         public string createUserId { get; set; }

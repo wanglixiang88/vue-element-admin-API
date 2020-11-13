@@ -111,4 +111,19 @@ namespace VueElemenntAdminModel.APIModel
     }
 
     #endregion
+
+    #region /UserInfo/DeleteUser
+
+    /// <summary>
+    /// 删除用户接口请求的参数
+    /// </summary>
+    public class DeleteUserReq: BaseInfo
+    {
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public int userId { get; set; }
+    }
+
+    #endregion
 }

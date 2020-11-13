@@ -77,5 +77,21 @@ namespace APIExample.APIControllers
             saveUserInfoReq.token = Request.Properties["userToken"].ToString();
             return _userInfoServices.SaveUserInfo(saveUserInfoReq);
         }
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        [Route("DeleteUser")]
+        [HttpPost]
+        public CommonAPIResult<string> DeleteUser ([FromBody] DeleteUserReq saveUserInfoReq)
+        {
+            saveUserInfoReq.name = Request.Properties["userName"].ToString();
+            saveUserInfoReq.id = Request.Properties["userId"].ToString();
+            saveUserInfoReq.token = Request.Properties["userToken"].ToString();
+            return _userInfoServices.DeleteUser(saveUserInfoReq);
+        }
+
     }
 }

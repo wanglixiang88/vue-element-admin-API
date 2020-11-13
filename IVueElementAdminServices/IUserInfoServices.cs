@@ -37,5 +37,12 @@ namespace IVueElementAdminServices
         /// <param name="saveUserInfoReq"></param>
         /// <returns></returns>
         CommonAPIResult<string> SaveUserInfo(SaveUserInfoReq saveUserInfoReq);
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="saveUserInfoReq"></param>
+        /// <returns></returns>
+        CommonAPIResult<string> DeleteUser(DeleteUserReq saveUserInfoReq);
     }
 }
