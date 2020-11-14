@@ -126,4 +126,19 @@ namespace VueElemenntAdminModel.APIModel
     }
 
     #endregion
+
+    #region /UserInfo/ChangUserVaild
+
+    /// <summary>
+    /// 改变用户状态请求的参数
+    /// </summary>
+    public class ChangUserVaildReq: DeleteUserReq
+    {
+        /// <summary>
+        /// 是否有效 0.有效 1.无效
+        /// </summary>
+        public int isValid { get; set; }
+    }
+
+    #endregion
 }

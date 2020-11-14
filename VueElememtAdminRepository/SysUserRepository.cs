@@ -138,6 +138,27 @@ namespace VueElememtAdminRepository
             }
         }
 
+
+        /// <summary>
+        /// 修改用户状态
+        /// </summary>
+        /// <param name="changUserVaildReq"></param>
+        /// <returns></returns>
+        public int ChangUserVaild(ChangUserVaildReq changUserVaildReq)
+        {
+            using (Conn)
+            {
+                return Conn.Execute(@" update sys_user set isValid=@isValid,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where userId=@userId ", new
+                {
+                    isValid = changUserVaildReq.isValid,
+                    updateTime = DateTime.Now,
+                    updateUserId = changUserVaildReq.id,
+                    updateUserName = changUserVaildReq.name,
+                    userId = changUserVaildReq.userId
+                });
+            }
+        }
+
         /// <summary>
         /// 根据用户姓名获取用户信息
         /// </summary>

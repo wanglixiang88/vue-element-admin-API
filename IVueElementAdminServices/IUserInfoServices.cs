@@ -44,5 +44,12 @@ namespace IVueElementAdminServices
         /// <param name="saveUserInfoReq"></param>
         /// <returns></returns>
         CommonAPIResult<string> DeleteUser(DeleteUserReq saveUserInfoReq);
+
+        /// <summary>
+        /// 改变用户状态
+        /// </summary>
+        /// <param name="changUserVaildReq"></param>
+        /// <returns></returns>
+        CommonAPIResult<string> ChangUserVaild(ChangUserVaildReq changUserVaildReq);
     }
 }

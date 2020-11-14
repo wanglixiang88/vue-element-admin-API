@@ -146,17 +146,44 @@ namespace VueElementAdminServices
             return commonAPIResult;
         }
 
-
         /// <summary>
-        /// 
+        /// 删除用户
         /// </summary>
         /// <param name="saveUserInfoReq"></param>
         /// <returns></returns>
         public CommonAPIResult<string> DeleteUser(DeleteUserReq saveUserInfoReq)
         {
             CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
-            var saveUser = _sysUserRepository.DeleteUserInfo(saveUserInfoReq); //保存用户
+            var deleteUser = _sysUserRepository.DeleteUser(saveUserInfoReq); //保存用户
+            if (deleteUser > 0)
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Ok, "删除成功");
+            }
+            else
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Ok, "删除失败");
+            }
+            return commonAPIResult;
+        }
 
+        /// <summary>
+        /// 修改用户状态
+        /// </summary>
+        /// <param name="changUserVaildReq"></param>
+        /// <returns></returns>
+        public CommonAPIResult<string> ChangUserVaild(ChangUserVaildReq changUserVaildReq)
+        {
+            CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
+            var deleteUser = _sysUserRepository.ChangUserVaild(changUserVaildReq); //修改状态
+            if (deleteUser > 0)
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Ok, "修改成功");
+            }
+            else
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Ok, "修改失败");
+            }
+            return commonAPIResult;
         }
     }
 }

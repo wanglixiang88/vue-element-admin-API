@@ -64,10 +64,17 @@ namespace IVueElememtAdminRepository
         int SaveUserInfo(SaveUserInfoReq saveUserInfoReq);
 
         /// <summary>
-        /// 
+        /// 删除用户
         /// </summary>
         /// <param name="saveUserInfoReq"></param>
         /// <returns></returns>
         int DeleteUser(DeleteUserReq saveUserInfoReq);
+
+        /// <summary>
+        /// 修改用户状态
+        /// </summary>
+        /// <param name="changUserVaildReq"></param>
+        /// <returns></returns>
+        int ChangUserVaild(ChangUserVaildReq changUserVaildReq);
     }
 }
