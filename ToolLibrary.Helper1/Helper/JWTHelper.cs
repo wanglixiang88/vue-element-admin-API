@@ -8,14 +8,14 @@ namespace ToolLibrary.Helper.Helper
     public class JWTHelper
     {
         //密钥
-        private string key = "vueElementAdminApi_WangLixiang";
+        private static string key = "vueElementAdminApi_WangLixiang";
 
         /// <summary>
         /// GWT加密
         /// </summary>
         /// <param name="u"></param>
         /// <returns></returns>
-        public string GetToken(UU u)
+        public static string GetToken(systemUser u)
         {
             JWT.Algorithms.IJwtAlgorithm Algorithm = new JWT.Algorithms.HMACSHA256Algorithm();
             JWT.IJsonSerializer json = new JS();
@@ -31,22 +31,28 @@ namespace ToolLibrary.Helper.Helper
         /// </summary>
         /// <param name="token"></param>
         /// <returns></returns>
-        public UU GetUU(string token)
+        public static systemUser GetUU(string token)
         {
             IJsonSerializer js = new JS();
             IJwtValidator validator = new JwtValidator(js, new JWT.UtcDateTimeProvider());
             JWT.IBase64UrlEncoder Base64 = new JWT.JwtBase64UrlEncoder();
             IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
             JwtDecoder en = new JwtDecoder(js, validator, Base64,algorithm);
-            return en.DecodeToObject<UU>(token);
+            return en.DecodeToObject<systemUser>(token);
         }
     }
 
-    public class UU
+    public class systemUser
     {
-        public string mme { get; set; }
-        public string Inat { get; set; }
-        public string iae { get; set; }
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        public long userId { get; set; }
+
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string userName { get; set; }
     }
 
     class JS : JWT.IJsonSerializer

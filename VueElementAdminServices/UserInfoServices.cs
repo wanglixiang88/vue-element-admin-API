@@ -58,7 +58,11 @@ namespace VueElementAdminServices
                 else
                 {
                     userInfo.tokenExpirationDate = DateTime.Now.AddDays(30);
-                    userInfo.userToken = Guid.NewGuid().ToString("N");
+
+                    systemUser u = new systemUser();
+                    u = AutoMapper.To<sys_user, systemUser>(userInfo);//对象转换
+                    userInfo.userToken =JWTHelper.GetToken(u); //GWT更新生成token
+
                     var i = _sysUserRepository.UpdateToken(userInfo); //更新token
                     if (i > 0)
                     {
