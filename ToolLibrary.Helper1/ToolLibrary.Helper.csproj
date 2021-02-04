@@ -36,6 +36,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="JWT, Version=8.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.8.0.0\lib\net46\JWT.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -54,9 +60,11 @@
   <ItemGroup>
     <Compile Include="Helper\AutoMapper.cs" />
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\Condition.cs" />
     <Compile Include="Helper\ConfigHelper.cs" />
     <Compile Include="Helper\DateTimeHelper.cs" />
     <Compile Include="Helper\EncryptHelper.cs" />
+    <Compile Include="Helper\JWTHelper.cs" />
     <Compile Include="Helper\RequestHelper.cs" />
     <Compile Include="Json\IsoDateTimeConverterContent.cs" />
     <Compile Include="Json\JsonExtension.cs" />
@@ -64,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

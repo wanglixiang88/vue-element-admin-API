@@ -64,7 +64,6 @@ namespace VueElementAdminServices
                     {
                         UserLoginRes userLoginRes = new UserLoginRes();
                         userLoginRes.token = userInfo.userToken; //设置返回到页面的token
-
                         commonAPIResult.UpdateStatus(userLoginRes, MessageDict.Ok, "登录成功！");
                         return commonAPIResult;
                     }

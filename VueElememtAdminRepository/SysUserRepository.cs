@@ -92,7 +92,7 @@ namespace VueElememtAdminRepository
             StringBuilder sql = new StringBuilder();
             sql.Append(@" SELECT * FROM  sys_user where 1=1 and isDelete=0 ");
             DynamicParameters ParamList = new DynamicParameters();
-            string WhereSql = ConditionBuilder.GetWhereSql(tableParame.parameterJson, out ParamList);
+            string WhereSql = ToolLibrary.Helper.Helper.ConditionBuilder.GetWhereSql(tableParame.parameterJson, out ParamList);
             sql.Append(WhereSql);
             return GetMySqlPageList<sys_user>(sql.ToString(), ParamList, ref tableParame);
         }
