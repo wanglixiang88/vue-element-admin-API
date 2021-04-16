@@ -23,7 +23,7 @@ namespace IVueElementAdminServices
         /// </summary>
         /// <param name="userDetailReq"></param>
         /// <returns></returns>
-        CommonAPIResult<UserDetailRes> GetUserDetail(string token);
+        CommonAPIResult<UserDetailRes> GetUserDetail(long userId);
 
         /// <summary>
         /// 获取列表信息

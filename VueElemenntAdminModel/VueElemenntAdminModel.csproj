@@ -49,11 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIModel\Base.cs" />
-    <Compile Include="APIModel\Condition.cs" />
     <Compile Include="APIModel\UserRelated.cs" />
     <Compile Include="BaseModel\CommonAPIResult.cs" />
     <Compile Include="BaseModel\CommonResult.cs" />
     <Compile Include="BaseModel\MessageDict.cs" />
+    <Compile Include="MySqlModel\sys_role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MySqlModel\sys_user.cs" />
   </ItemGroup>

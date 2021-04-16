@@ -90,11 +90,11 @@ namespace VueElementAdminServices
         /// </summary>
         /// <param name="userDetailReq"></param>
         /// <returns></returns>
-        public CommonAPIResult<UserDetailRes> GetUserDetail(string token)
+        public CommonAPIResult<UserDetailRes> GetUserDetail(long userId)
         {
             CommonAPIResult<UserDetailRes> commonAPIResult = new CommonAPIResult<UserDetailRes>();
 
-            var userInfo = _sysUserRepository.GetUserInfoByToken(token); //查询用户是否存在
+            var userInfo = _sysUserRepository.GetUserInfo(userId); //根据用户ID查询用户信息
             if (userInfo == null)
             {
                 commonAPIResult.UpdateStatus(null, MessageDict.NoDataExists, "用户不存在");

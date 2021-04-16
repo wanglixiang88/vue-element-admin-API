@@ -35,13 +35,13 @@ namespace APIExample.APIControllers
         /// <summary>
         /// 获取用户详细信息
         /// </summary>
-        /// <param name="token"></param>
+        /// <param name="userId">用户ID</param>
         /// <returns></returns>
         [Route("GetUserDetail")]
         [HttpGet]
-        public CommonAPIResult<UserDetailRes> GetUserDetail(string token)
+        public CommonAPIResult<UserDetailRes> GetUserDetail(long userId)
         {
-            return _userInfoServices.GetUserDetail(token);
+            return _userInfoServices.GetUserDetail(userId);
         }
 
         /// <summary>
