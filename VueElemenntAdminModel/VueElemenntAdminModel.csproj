@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIModel\Base.cs" />
+    <Compile Include="APIModel\RoleRelated.cs" />
     <Compile Include="APIModel\UserRelated.cs" />
     <Compile Include="BaseModel\CommonAPIResult.cs" />
     <Compile Include="BaseModel\CommonResult.cs" />
