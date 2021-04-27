@@ -55,6 +55,7 @@
     <Compile Include="BaseModel\CommonResult.cs" />
     <Compile Include="BaseModel\MessageDict.cs" />
     <Compile Include="MySqlModel\sys_role.cs" />
+    <Compile Include="MySqlModel\sys_menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MySqlModel\sys_user.cs" />
   </ItemGroup>
