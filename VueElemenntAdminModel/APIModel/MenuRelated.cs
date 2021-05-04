@@ -26,7 +26,7 @@ namespace VueElemenntAdminModel.APIModel
 
     #endregion
 
-    #region
+    #region 保存菜单接口所请求的参数
 
     /// <summary>
     /// 保存菜单接口所请求的参数
@@ -43,4 +43,18 @@ namespace VueElemenntAdminModel.APIModel
 
     #endregion
 
+    #region 删除菜单接口所请求的参数
+
+    /// <summary>
+    /// 删除菜单接口所请求的参数
+    /// </summary>
+    public class DeleteMenuReq : BaseInfo
+    {
+        /// <summary>
+        /// 菜单ID
+        /// </summary>
+        public long? menuId { get; set; }
+    }
+
+    #endregion
 }

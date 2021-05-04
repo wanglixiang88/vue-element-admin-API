@@ -119,5 +119,44 @@ namespace VueElementAdminServices
             }
         }
 
+        /// <summary>
+        /// 删除菜单信息
+        /// </summary>
+        /// <param name="deleteMenuReq"></param>
+        /// <returns></returns>
+        public CommonAPIResult<string> DeleteMenu(DeleteMenuReq deleteMenuReq)
+        {
+            CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
+            try
+            {
+                if (!deleteMenuReq.menuId.HasValue)
+                {
+                    commonAPIResult.UpdateStatus("", MessageDict.Ok, "菜单ID不能为空！");
+                    return commonAPIResult;
+                }
+
+                var parentList = _sysMenuRepository.GetMenuByParent(deleteMenuReq.menuId.Value); //查询当前菜单的子类
+                if (parentList.Count > 0)
+                {
+                    commonAPIResult.UpdateStatus("", MessageDict.Failed, "删除失败！请先删除当前菜单下的菜单！");
+                    return commonAPIResult;
+                }
+
+                var i = _sysMenuRepository.DeleteSysMenu(deleteMenuReq); //软删除菜单
+                if (i > 0)
+                {
+                    commonAPIResult.UpdateStatus("", MessageDict.Ok, "删除成功！");
+                    return commonAPIResult;
+                }
+
+                commonAPIResult.UpdateStatus("", MessageDict.Failed, "删除失败，请稍后再试！");
+                return commonAPIResult;
+            }
+            catch (Exception ex)
+            {
+                commonAPIResult.UpdateStatus("", MessageDict.Failed, "系统出现异常！异常信息：" + ex.Message);
+                return commonAPIResult;
+            }
+        }
     }
 }

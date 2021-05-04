@@ -37,5 +37,19 @@ namespace IVueElememtAdminRepository
         /// <param name="sys_menu"></param>
         /// <returns></returns>
         int UpdateSysMenuInfo(sys_menu sys_menu);
+
+        /// <summary>
+        /// 软删除菜单
+        /// </summary>
+        /// <param name="deleteMenuReq"></param>
+        /// <returns></returns>
+        int DeleteSysMenu(DeleteMenuReq deleteMenuReq);
+
+        /// <summary>
+        /// 根据ID查询子类信息
+        /// </summary>
+        /// <param name="parentId">父类ID</param>
+        /// <returns></returns>
+        List<sys_menu> GetMenuByParent(long parentId);
     }
 }

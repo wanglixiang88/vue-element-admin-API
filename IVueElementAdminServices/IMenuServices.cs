@@ -24,5 +24,12 @@ namespace IVueElementAdminServices
         /// <param name="saveMenuReq"></param>
         /// <returns></returns>
         CommonAPIResult<string> SaveMenuInfo(SaveMenuReq saveMenuReq);
+
+        /// <summary>
+        /// 删除菜单信息
+        /// </summary>
+        /// <param name="deleteMenuReq"></param>
+        /// <returns></returns>
+        CommonAPIResult<string> DeleteMenu(DeleteMenuReq deleteMenuReq);
     }
 }

@@ -90,7 +90,7 @@ namespace VueElememtAdminRepository
         {
             using (Conn)
             {
-                return Conn.Execute(@" update sys_menu set menuName=@menuName,parentId=@parentId,sequence=@sequence,route=@route,iconClass=@iconClass,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where menuId=@menuId ", new
+                return Conn.Execute(@" update sys_menu set menuName=@menuName,parentId=@parentId,sequence=@sequence,route=@route,iconClass=@iconClass,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where menuId=@menuId and isDelete=0", new
                 {
                     menuName = sys_menu.menuName,
                     parentId = sys_menu.parentId,
@@ -102,6 +102,39 @@ namespace VueElememtAdminRepository
                     updateTime = sys_menu.updateTime,
                     menuId = sys_menu.menuId
                 });
+            }
+        }
+
+        /// <summary>
+        /// 软删除菜单
+        /// </summary>
+        /// <param name="deleteMenuReq"></param>
+        /// <returns></returns>
+        public int DeleteSysMenu(DeleteMenuReq deleteMenuReq)
+        {
+            using (Conn)
+            {
+                return Conn.Execute(@" update sys_menu set isDelete=@isDelete, updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where menuId=@menuId and isDelete=0 ", new
+                {
+                    isDelete = 1,
+                    updateUserId = deleteMenuReq.id,
+                    updateUserName = deleteMenuReq.name,
+                    updateTime = DateTime.Now,
+                    menuId = deleteMenuReq.menuId
+                });
+            }
+        }
+
+        /// <summary>
+        /// 根据ID查询子类信息
+        /// </summary>
+        /// <param name="parentId">父类ID</param>
+        /// <returns></returns>
+        public List<sys_menu> GetMenuByParent(long parentId)
+        {
+            using (Conn)
+            {
+                return Conn.Query<sys_menu>("select * from sys_menu where isDelete=0 and parentId=@parentId", new { parentId = parentId }).ToList();
             }
         }
     }

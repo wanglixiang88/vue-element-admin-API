@@ -6,7 +6,6 @@ using System.Web.Http;
 using VueElememtAdminRepository;
 using VueElemenntAdminModel.APIModel;
 using VueElemenntAdminModel.BaseModel;
-using vueElementAdminModel.MySqlModel;
 using VueElementAdminServices;
 
 namespace APIExample.APIControllers
@@ -52,6 +51,20 @@ namespace APIExample.APIControllers
             saveMenuReq.name = Request.Properties["userName"].ToString();
             saveMenuReq.id = Request.Properties["userId"].ToString();
             return _menuServices.SaveMenuInfo(saveMenuReq);
+        }
+
+        /// <summary>
+        /// 软删除菜单
+        /// </summary>
+        /// <param name="deleteMenuReq">请求的参数</param>
+        /// <returns></returns>
+        [Route("DeleteMenu")]
+        [HttpPost]
+        public CommonAPIResult<string> DeleteMenu([FromBody] DeleteMenuReq deleteMenuReq)
+        {
+            deleteMenuReq.name = Request.Properties["userName"].ToString();
+            deleteMenuReq.id = Request.Properties["userId"].ToString();
+            return _menuServices.DeleteMenu(deleteMenuReq);
         }
     }
 }
