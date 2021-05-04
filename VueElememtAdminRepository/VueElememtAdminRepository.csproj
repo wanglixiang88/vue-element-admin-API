@@ -112,6 +112,7 @@
     <Compile Include="DBConfig\DBUtilities.cs" />
     <Compile Include="DBConfig\MySQLInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysMenuRepository.cs" />
     <Compile Include="SysUserRoleRepository.cs" />
     <Compile Include="SysUserRepository.cs" />
   </ItemGroup>

@@ -19,7 +19,12 @@ namespace vueElementAdminModel.MySqlModel
         /// <summary>
         /// 菜单父类ID
         /// </summary>
-        public long parentId { get; set; }
+        public long? parentId { get; set; }
+
+        /// <summary>
+        /// 排序字段，越小的排在越前面
+        /// </summary>
+        public int sequence { get; set; }
 
         /// <summary>
         /// 菜单路径

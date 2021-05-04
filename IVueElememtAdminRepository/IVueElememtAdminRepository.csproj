@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\IRepository.cs" />
+    <Compile Include="ISysMenuRepository.cs" />
     <Compile Include="ISysUserRoleRepository.cs" />
     <Compile Include="ISysUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
