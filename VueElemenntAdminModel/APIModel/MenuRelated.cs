@@ -22,6 +22,11 @@ namespace VueElemenntAdminModel.APIModel
         /// 子类
         /// </summary>
         public List<menuList> children { get; set; }
+
+        /// <summary>
+        /// 绑定model的操作项
+        /// </summary>
+        public List<string> modelOperation { get; set; }
     }
 
     #endregion
@@ -39,7 +44,23 @@ namespace VueElemenntAdminModel.APIModel
         public int sequence { get; set; }
         public string route { get; set; }
         public string iconClass { get; set; }
+
+        public string operation { get; set; }
     }
+
+    public class OperationItems
+    {
+        /// <summary>
+        /// 名称
+        /// </summary>
+        public string name { get; set; }
+
+        /// <summary>
+        /// 值
+        /// </summary>
+        public string value { get; set; }
+    }
+
 
     #endregion
 

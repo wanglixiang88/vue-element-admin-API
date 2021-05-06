@@ -40,6 +40,17 @@ namespace VueElememtAdminRepository
                 DynamicParameters ParamList = new DynamicParameters();
                 string WhereSql = ConditionBuilder.GetWhereSql(tableParame.parameterJson, out ParamList);
                 sql.Append(WhereSql);
+                if (!string.IsNullOrEmpty(tableParame.sidx))
+                {
+                    if (tableParame.sidx.ToUpper().IndexOf("ASC") + tableParame.sidx.ToUpper().IndexOf("DESC") > 0)
+                    {
+                        sql.Append(" Order By " + tableParame.sidx);
+                    }
+                    else
+                    {
+                        sql.Append(" Order By " + tableParame.sidx + " " + (tableParame.sort == "ASC" ? "" : "DESC"));
+                    }
+                }
                 return Conn.Query<sys_menu>(sql.ToString());
             }
         }
@@ -66,14 +77,15 @@ namespace VueElememtAdminRepository
         {
             using (Conn)
             {
-                return Conn.Execute(@"insert into sys_menu(menuName,parentId,sequence,route,iconClass,isDelete,createTime,createUserId,createUserName) values(@menuName,@parentId,@sequence,@route,@iconClass,0,@createTime,@createUserId,@createUserName)", new
+                return Conn.Execute(@"insert into sys_menu(menuName,parentId,sequence,route,iconClass,isDelete,createTime,createUserId,createUserName,operation) values(@menuName,@parentId,@sequence,@route,@iconClass,0,@createTime,@createUserId,@createUserName,@operation)", new
                 {
                     menuName= sys_menu.menuName,
                     parentId= sys_menu.parentId,
                     sequence= sys_menu.sequence,
                     route= sys_menu.route,
                     iconClass= sys_menu.iconClass,
-                    isDelete=0,
+                    operation= sys_menu.operation,
+                    isDelete =0,
                     createTime= sys_menu.createTime,
                     createUserId= sys_menu.createUserId,
                     createUserName= sys_menu.createUserName
@@ -90,7 +102,7 @@ namespace VueElememtAdminRepository
         {
             using (Conn)
             {
-                return Conn.Execute(@" update sys_menu set menuName=@menuName,parentId=@parentId,sequence=@sequence,route=@route,iconClass=@iconClass,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where menuId=@menuId and isDelete=0", new
+                return Conn.Execute(@" update sys_menu set menuName=@menuName,parentId=@parentId,sequence=@sequence,route=@route,iconClass=@iconClass,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime,operation=@operation where menuId=@menuId and isDelete=0", new
                 {
                     menuName = sys_menu.menuName,
                     parentId = sys_menu.parentId,
@@ -100,6 +112,7 @@ namespace VueElememtAdminRepository
                     updateUserId = sys_menu.updateUserId,
                     updateUserName = sys_menu.updateUserName,
                     updateTime = sys_menu.updateTime,
+                    operation=sys_menu.operation,
                     menuId = sys_menu.menuId
                 });
             }

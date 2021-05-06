@@ -1,45 +1,22 @@
-﻿using SqlSugar;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace vueElementAdminModel.MySqlModel
+namespace VueElemenntAdminModel.MySqlModel
 {
-    public class sys_menu
+    public class sys_dictionary
     {
         /// <summary>
-        /// 菜单ID guid 唯一
+        /// 名称
         /// </summary>
-        [SugarColumn(IsPrimaryKey = true)]
-        public long menuId { get; set; }
+        public string name { get; set; }
 
         /// <summary>
-        /// 菜单名称
+        /// 值
         /// </summary>
-        public string menuName { get; set; }
-
-        /// <summary>
-        /// 菜单父类ID
-        /// </summary>
-        public long? parentId { get; set; }
-
-        /// <summary>
-        /// 排序字段，越小的排在越前面
-        /// </summary>
-        public int sequence { get; set; }
-
-        /// <summary>
-        /// 菜单路径
-        /// </summary>
-        public string route { get; set; }
-
-        /// <summary>
-        /// 图标样式
-        /// </summary>
-        public string iconClass { get; set; }
-
-        /// <summary>
-        /// {"insert":"1","delete":"1","update":"1","select":"1","export":"1"}对应增改删查导出
-        /// </summary>
-        public string operation { get; set; }
+        public string value { get; set; }
 
         /// <summary>
         /// 是否删除 0.未删除 1.已删除
@@ -75,6 +52,5 @@ namespace vueElementAdminModel.MySqlModel
         ///更新时间
         /// </summary>
         public DateTime? updateTime { get; set; }
-
     }
 }
