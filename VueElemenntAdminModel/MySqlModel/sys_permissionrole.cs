@@ -1,34 +1,30 @@
 ﻿using SqlSugar;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace VueElemenntAdminModel.MySqlModel
+namespace vueElementAdminModel.MySqlModel
 {
-    public class sys_dictionary
+    public class sys_permissionrole
     {
         /// <summary>
-        /// 数据字典表的主键
+        /// 角色权限配置表主键
         /// </summary>
         [SugarColumn(IsPrimaryKey = true)]
-        public long arryid { get; set; }
+        public long pId { get; set; }
 
         /// <summary>
-        /// 名称
+        /// 角色ID
         /// </summary>
-        public string name { get; set; }
+        public long roleId { get; set; }
 
         /// <summary>
-        /// 值
+        /// 菜单ID
         /// </summary>
-        public string value { get; set; }
+        public long menuId { get; set; }
 
         /// <summary>
-        /// 父类ID
+        /// 操作项 {"insert":"1","delete":"1","update":"1","select":"1","export":"1"}对应增改删查导出
         /// </summary>
-        public long? parentId { get; set; }
+        public string operation { get; set; }
 
         /// <summary>
         /// 是否删除 0.未删除 1.已删除
@@ -64,5 +60,6 @@ namespace VueElemenntAdminModel.MySqlModel
         ///更新时间
         /// </summary>
         public DateTime? updateTime { get; set; }
+
     }
 }
