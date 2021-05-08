@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIBusiness\UsersBusiness.cs" />
+    <Compile Include="APIControllers\DictionaryController.cs" />
     <Compile Include="APIControllers\MenuController.cs" />
     <Compile Include="APIControllers\UserRoleController.cs" />
     <Compile Include="APIControllers\UserInfoController.cs" />
