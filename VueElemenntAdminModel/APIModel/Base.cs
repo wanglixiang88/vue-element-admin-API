@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ToolLibrary.Helper.Helper;
 
-namespace VueElemenntAdminModel.APIModel
+namespace VueElementAdminModel.APIModel
 {
     /// <summary>
     /// 用户信息的基类

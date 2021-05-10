@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.MySqlModel;
 
-namespace VueElemenntAdminModel.APIModel
+namespace VueElementAdminModel.APIModel
 {
     /// <summary>
     /// 菜单相关类

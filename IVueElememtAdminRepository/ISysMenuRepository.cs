@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VueElemenntAdminModel.APIModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace IVueElememtAdminRepository
 {

@@ -4,8 +4,8 @@ using IVueElementAdminServices;
 using System.Collections.Generic;
 using System.Web.Http;
 using VueElememtAdminRepository;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
 using VueElementAdminServices;
 
 namespace APIExample.APIControllers

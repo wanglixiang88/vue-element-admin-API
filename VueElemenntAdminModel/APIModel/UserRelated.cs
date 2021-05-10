@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VueElemenntAdminModel.APIModel
+namespace VueElementAdminModel.APIModel
 {
     /// <summary>
     /// 用户相关的请求

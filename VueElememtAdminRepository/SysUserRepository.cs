@@ -11,8 +11,8 @@ using ToolLibrary.Helper.Helper;
 using ToolLibrary.Helper.Json;
 using VueElememtAdminRepository.Base;
 using VueElememtAdminRepository.DBConfig;
-using VueElemenntAdminModel.APIModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace VueElememtAdminRepository
 {

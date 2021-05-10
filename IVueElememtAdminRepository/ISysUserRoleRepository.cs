@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using VueElemenntAdminModel.APIModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace IVueElememtAdminRepository
 {

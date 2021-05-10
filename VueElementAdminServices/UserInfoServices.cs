@@ -1,10 +1,10 @@
 ﻿using IVueElememtAdminRepository;
 using IVueElementAdminServices;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
 using ToolLibrary.Helper.Helper;
 using System;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.MySqlModel;
 using System.Collections.Generic;
 using System.Linq;
 

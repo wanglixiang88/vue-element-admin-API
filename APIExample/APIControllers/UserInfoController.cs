@@ -4,9 +4,9 @@ using IVueElementAdminServices;
 using System.Collections.Generic;
 using System.Web.Http;
 using VueElememtAdminRepository;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
+using VueElementAdminModel.MySqlModel;
 using VueElementAdminServices;
 
 namespace APIExample.APIControllers

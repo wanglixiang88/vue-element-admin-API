@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using ToolLibrary.Helper;
 using ToolLibrary.Helper.Helper;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
-using VueElemenntAdminModel.MySqlModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
+using VueElementAdminModel.MySqlModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace VueElementAdminServices
 {

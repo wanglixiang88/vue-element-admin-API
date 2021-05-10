@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VueElemenntAdminModel.APIModel;
+using VueElementAdminModel.APIModel;
 
 namespace VueElememtAdminRepository.Base
 {

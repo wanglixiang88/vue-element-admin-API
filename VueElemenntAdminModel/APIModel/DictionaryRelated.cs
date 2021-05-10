@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VueElemenntAdminModel.MySqlModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.MySqlModel;
 
-namespace VueElemenntAdminModel.APIModel
+namespace VueElementAdminModel.APIModel
 {
     /// <summary>
     /// 字典相关类

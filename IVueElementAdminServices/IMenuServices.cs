@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace IVueElementAdminServices
 {

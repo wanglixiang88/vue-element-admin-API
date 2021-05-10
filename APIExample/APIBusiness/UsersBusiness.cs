@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
 
 namespace APIExample.APIBusiness
 {

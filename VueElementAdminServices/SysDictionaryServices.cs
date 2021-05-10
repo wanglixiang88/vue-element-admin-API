@@ -5,10 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using ToolLibrary.Helper;
 using ToolLibrary.Helper.Helper;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
-using VueElemenntAdminModel.MySqlModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace VueElementAdminServices
 {
@@ -35,11 +34,11 @@ namespace VueElementAdminServices
 
 
         /// <summary>
-        /// 获取全部的菜单
+        /// 获取全部的数据字典
         /// </summary>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        public List<dictionaryList> GetMenuList(ref TableParame tableParame)
+        public List<dictionaryList> GetDictionary(ref TableParame tableParame)
         {
             var menuList = new List<dictionaryList>();
             var data = _sysDictionaryRepository.GetMenuList(ref tableParame).ToList();
@@ -47,9 +46,8 @@ namespace VueElementAdminServices
             {
                 if (!item.parentId.HasValue)
                 {
-                    var operationList = JsonHelper.DeserializeList<OperationItems>(item.operation);
-                    var treeVo = AutoMapper.To<sys_menu, dictionaryList>(item);
-                    treeVo.children = GetTreeVos(data, item.menuId);
+                    var treeVo = AutoMapper.To<sys_dictionary, dictionaryList>(item);
+                    treeVo.children = GetTreeVos(data, item.arryid);
                     menuList.Add(treeVo);
                 }
             }
@@ -61,16 +59,15 @@ namespace VueElementAdminServices
         /// </summary>
         /// <param name="treeVos"></param>
         /// <returns></returns>
-        public List<dictionaryList> GetTreeVos(List<sys_menu> GetModelList, long parentId)
+        public List<dictionaryList> GetTreeVos(List<sys_dictionary> GetModelList, long parentId)
         {
             List<dictionaryList> treeVos = new List<dictionaryList>();
             foreach (var item in GetModelList)
             {
-                var treeVo = AutoMapper.To<sys_menu, dictionaryList>(item);
+                var treeVo = AutoMapper.To<sys_dictionary, dictionaryList>(item);
                 if (item.parentId.Equals(parentId))
                 {
-                    var operationList = JsonHelper.DeserializeList<OperationItems>(item.operation);
-                    treeVo.children = GetTreeVos(GetModelList, item.menuId);
+                    treeVo.children = GetTreeVos(GetModelList, item.arryid);
                     treeVos.Add(treeVo);
                 }
             }

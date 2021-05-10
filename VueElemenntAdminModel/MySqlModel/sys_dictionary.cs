@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VueElemenntAdminModel.MySqlModel
+namespace VueElementAdminModel.MySqlModel
 {
     public class sys_dictionary
     {

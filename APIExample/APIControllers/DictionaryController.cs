@@ -4,8 +4,8 @@ using IVueElementAdminServices;
 using System.Collections.Generic;
 using System.Web.Http;
 using VueElememtAdminRepository;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.BaseModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.BaseModel;
 using VueElementAdminServices;
 
 namespace APIExample.APIControllers
@@ -18,7 +18,7 @@ namespace APIExample.APIControllers
     public class DictionaryController : ApiController
     {
         private readonly static ISysDictionaryRepository _sysDictionaryRepository = new SysDictionaryRepository();
-        private readonly ISysDictionaryServices _menuServices = new SysDictionaryServices(_sysDictionaryRepository);
+        private readonly ISysDictionaryServices _DictionaryServices = new SysDictionaryServices(_sysDictionaryRepository);
 
         /// <summary>
         /// 获取字典列表
@@ -30,7 +30,7 @@ namespace APIExample.APIControllers
         {
             CommonAPIResult<BaseTable<List<dictionaryList>>> commonAPIResult = new CommonAPIResult<BaseTable<List<dictionaryList>>>();
 
-            var data = _menuServices.GetMenuList(ref tableParame);
+            var data = _DictionaryServices.GetDictionary(ref tableParame);
             BaseTable<List<dictionaryList>> baseTable = new BaseTable<List<dictionaryList>>();
             baseTable.item = data;
             baseTable.total = tableParame.recordsFiltered;
@@ -50,7 +50,7 @@ namespace APIExample.APIControllers
         {
             saveMenuReq.name = Request.Properties["userName"].ToString();
             saveMenuReq.id = Request.Properties["userId"].ToString();
-            return _menuServices.SaveMenuInfo(saveMenuReq);
+            return _DictionaryServices.SaveMenuInfo(saveMenuReq);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace APIExample.APIControllers
         {
             deleteMenuReq.name = Request.Properties["userName"].ToString();
             deleteMenuReq.id = Request.Properties["userId"].ToString();
-            return _menuServices.DeleteMenu(deleteMenuReq);
+            return _DictionaryServices.DeleteMenu(deleteMenuReq);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VueElemenntAdminModel.BaseModel
+namespace VueElementAdminModel.BaseModel
 {
     public class CommonResult<T>
     {

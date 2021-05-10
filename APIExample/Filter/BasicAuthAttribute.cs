@@ -11,7 +11,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using ToolLibrary.Helper;
 using VueElememtAdminRepository;
-using VueElemenntAdminModel.BaseModel;
+using VueElementAdminModel.BaseModel;
 
 namespace APIExample.Filter
 {

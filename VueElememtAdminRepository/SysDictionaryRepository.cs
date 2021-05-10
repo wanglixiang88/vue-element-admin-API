@@ -11,9 +11,8 @@ using ToolLibrary.Helper.Helper;
 using ToolLibrary.Helper.Json;
 using VueElememtAdminRepository.Base;
 using VueElememtAdminRepository.DBConfig;
-using VueElemenntAdminModel.APIModel;
-using VueElemenntAdminModel.MySqlModel;
-using vueElementAdminModel.MySqlModel;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace VueElememtAdminRepository
 {
@@ -32,12 +31,12 @@ namespace VueElememtAdminRepository
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        public IEnumerable<sys_menu> GetMenuList(ref TableParame tableParame)
+        public IEnumerable<sys_dictionary> GetMenuList(ref TableParame tableParame)
         {
             using (Conn)
             {
                 StringBuilder sql = new StringBuilder();
-                sql.Append(@" SELECT * FROM  sys_menu where 1=1 and isDelete=0 ");
+                sql.Append(@" SELECT * FROM sys_dictionary where 1=1 and isDelete=0 ");
                 DynamicParameters ParamList = new DynamicParameters();
                 string WhereSql = ConditionBuilder.GetWhereSql(tableParame.parameterJson, out ParamList);
                 sql.Append(WhereSql);
@@ -52,7 +51,7 @@ namespace VueElememtAdminRepository
                         sql.Append(" Order By " + tableParame.sidx + " " + (tableParame.sort == "ASC" ? "" : "DESC"));
                     }
                 }
-                return Conn.Query<sys_menu>(sql.ToString());
+                return Conn.Query<sys_dictionary>(sql.ToString());
             }
         }
 

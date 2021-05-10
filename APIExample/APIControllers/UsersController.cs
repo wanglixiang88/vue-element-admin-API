@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using VueElemenntAdminModel.BaseModel;
+using VueElementAdminModel.BaseModel;
 
 namespace APIExample.APIControllers
 {

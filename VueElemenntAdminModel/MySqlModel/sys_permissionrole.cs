@@ -1,7 +1,7 @@
 ﻿using SqlSugar;
 using System;
 
-namespace vueElementAdminModel.MySqlModel
+namespace VueElementAdminModel.MySqlModel
 {
     public class sys_permissionrole
     {

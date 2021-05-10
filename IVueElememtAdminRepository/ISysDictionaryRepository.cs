@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VueElemenntAdminModel.APIModel;
-using vueElementAdminModel.MySqlModel;
+﻿using System.Collections.Generic;
+using VueElementAdminModel.APIModel;
+using VueElementAdminModel.MySqlModel;
 
 namespace IVueElememtAdminRepository
 {
     public interface ISysDictionaryRepository
     {
         /// <summary>
-        /// 获取全部的菜单
+        /// 获取全部的数据字典
         /// </summary>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        IEnumerable<sys_menu> GetMenuList(ref TableParame tableParame);
+        IEnumerable<sys_dictionary> GetMenuList(ref TableParame tableParame);
 
         /// <summary>
         /// 根据menuId查询菜单信息
