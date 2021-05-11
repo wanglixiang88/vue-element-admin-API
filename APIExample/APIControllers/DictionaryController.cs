@@ -40,31 +40,31 @@ namespace APIExample.APIControllers
         }
 
         /// <summary>
-        /// 保存菜单信息
+        /// 保存数据字典
         /// </summary>
-        /// <param name="saveMenuReq"></param>
+        /// <param name="saveDictionaryReq"></param>
         /// <returns></returns>
-        [Route("SaveMenu")]
+        [Route("SaveDictionary")]
         [HttpPost]
-        public CommonAPIResult<string> SaveMenu([FromBody] SaveMenuReq saveMenuReq)
+        public CommonAPIResult<string> SaveDictionary([FromBody] SaveDictionaryReq saveDictionaryReq)
         {
-            saveMenuReq.name = Request.Properties["userName"].ToString();
-            saveMenuReq.id = Request.Properties["userId"].ToString();
-            return _DictionaryServices.SaveMenuInfo(saveMenuReq);
+            saveDictionaryReq.name = Request.Properties["userName"].ToString();
+            saveDictionaryReq.id = Request.Properties["userId"].ToString();
+            return _DictionaryServices.SaveDictionaryInfo(saveDictionaryReq);
         }
 
         /// <summary>
-        /// 软删除菜单
+        /// 软删除数据字典
         /// </summary>
-        /// <param name="deleteMenuReq">请求的参数</param>
+        /// <param name="deleteDictionaryReq">请求的参数</param>
         /// <returns></returns>
-        [Route("DeleteMenu")]
+        [Route("DeleteDictionary")]
         [HttpPost]
-        public CommonAPIResult<string> DeleteMenu([FromBody] DeleteMenuReq deleteMenuReq)
+        public CommonAPIResult<string> DeleteMenu([FromBody] DeleteDictionaryReq deleteDictionaryReq)
         {
-            deleteMenuReq.name = Request.Properties["userName"].ToString();
-            deleteMenuReq.id = Request.Properties["userId"].ToString();
-            return _DictionaryServices.DeleteMenu(deleteMenuReq);
+            deleteDictionaryReq.name = Request.Properties["userName"].ToString();
+            deleteDictionaryReq.id = Request.Properties["userId"].ToString();
+            return _DictionaryServices.DeleteDictionary(deleteDictionaryReq);
         }
     }
 }

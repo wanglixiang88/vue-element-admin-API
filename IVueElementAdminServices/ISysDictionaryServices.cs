@@ -14,17 +14,17 @@ namespace IVueElementAdminServices
         List<dictionaryList> GetDictionary(ref TableParame tableParame);
 
         /// <summary>
-        /// 保存菜单信息
+        /// 保存数据字典
         /// </summary>
-        /// <param name="saveMenuReq"></param>
+        /// <param name="saveDictionaryReq"></param>
         /// <returns></returns>
-        CommonAPIResult<string> SaveMenuInfo(SaveMenuReq saveMenuReq);
+        CommonAPIResult<string> SaveDictionaryInfo(SaveDictionaryReq saveDictionaryReq);
 
         /// <summary>
         /// 删除菜单信息
         /// </summary>
         /// <param name="deleteMenuReq"></param>
         /// <returns></returns>
-        CommonAPIResult<string> DeleteMenu(DeleteMenuReq deleteMenuReq);
+        CommonAPIResult<string> DeleteDictionary(DeleteDictionaryReq deleteMenuReq);
     }
 }

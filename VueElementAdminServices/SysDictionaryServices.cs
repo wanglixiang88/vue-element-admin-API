@@ -41,13 +41,13 @@ namespace VueElementAdminServices
         public List<dictionaryList> GetDictionary(ref TableParame tableParame)
         {
             var menuList = new List<dictionaryList>();
-            var data = _sysDictionaryRepository.GetMenuList(ref tableParame).ToList();
+            var data = _sysDictionaryRepository.GetDictionaryList(ref tableParame).ToList();
             foreach (var item in data)
             {
                 if (!item.parentId.HasValue)
                 {
                     var treeVo = AutoMapper.To<sys_dictionary, dictionaryList>(item);
-                    treeVo.children = GetTreeVos(data, item.arryid);
+                    treeVo.children = GetTreeVos(data, item.arryId);
                     menuList.Add(treeVo);
                 }
             }
@@ -67,7 +67,7 @@ namespace VueElementAdminServices
                 var treeVo = AutoMapper.To<sys_dictionary, dictionaryList>(item);
                 if (item.parentId.Equals(parentId))
                 {
-                    treeVo.children = GetTreeVos(GetModelList, item.arryid);
+                    treeVo.children = GetTreeVos(GetModelList, item.arryId);
                     treeVos.Add(treeVo);
                 }
             }
@@ -75,47 +75,43 @@ namespace VueElementAdminServices
         }
 
         /// <summary>
-        /// 保存菜单信息
+        /// 保存数据字典
         /// </summary>
-        /// <param name="saveMenuReq"></param>
+        /// <param name="saveDictionaryReq"></param>
         /// <returns></returns>
-        public CommonAPIResult<string> SaveMenuInfo(SaveMenuReq saveMenuReq)
+        public CommonAPIResult<string> SaveDictionaryInfo(SaveDictionaryReq saveDictionaryReq)
         {
             CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
             try
             {
                 var i = 0;
-                if (string.IsNullOrEmpty(saveMenuReq.menuName))
+                if (string.IsNullOrEmpty(saveDictionaryReq.arryName))
                 {
-                    commonAPIResult.UpdateStatus("", MessageDict.Failed, "请输入菜单名称");
+                    commonAPIResult.UpdateStatus("", MessageDict.Failed, "请输入名称");
                     return commonAPIResult;
                 }
 
-                var valueList = JsonHelper.DeserializeList<string>(saveMenuReq.operation);
-                var newList = operationList.Where(t => valueList.Contains(t.value)).ToList();
-                saveMenuReq.operation = JsonHelper.Serialize(newList);
-
-                if (saveMenuReq.menuId.HasValue)
+                if (saveDictionaryReq.arryId.HasValue)
                 {
-                    var menuInfo = _sysDictionaryRepository.GetMenuById(saveMenuReq.menuId.Value);
+                    var menuInfo = _sysDictionaryRepository.GetDictionaryById(saveDictionaryReq.arryId.Value);
                     if (menuInfo == null)
                     {
-                        commonAPIResult.UpdateStatus("", MessageDict.NoDataExists, "查询不到角色信息！请联系管理员！");
+                        commonAPIResult.UpdateStatus("", MessageDict.NoDataExists, "查询不到数据字典信息！请稍后再试或联系管理员处理！");
                         return commonAPIResult;
                     }
-                    var needUpdate = AutoMapper.To<SaveMenuReq, sys_menu>(saveMenuReq);
+                    var needUpdate = AutoMapper.To<SaveDictionaryReq, sys_dictionary>(saveDictionaryReq);
                     needUpdate.updateTime = DateTime.Now;
-                    needUpdate.updateUserId = saveMenuReq.id;
-                    needUpdate.updateUserName = saveMenuReq.name;
-                    i = _sysDictionaryRepository.UpdateSysMenuInfo(needUpdate);//更新数据到数据库
+                    needUpdate.updateUserId = saveDictionaryReq.id;
+                    needUpdate.updateUserName = saveDictionaryReq.name;
+                    i = _sysDictionaryRepository.UpdateDictionaryInfo(needUpdate);//更新数据到数据库
                 }
                 else
                 {
-                    var needAdd = AutoMapper.To<SaveMenuReq, sys_menu>(saveMenuReq);
+                    var needAdd = AutoMapper.To<SaveDictionaryReq, sys_dictionary>(saveDictionaryReq);
                     needAdd.createTime = DateTime.Now;
-                    needAdd.createUserId = saveMenuReq.id;
-                    needAdd.createUserName = saveMenuReq.name;
-                    i = _sysDictionaryRepository.SaveSysMenuInfo(needAdd);//保存到数据库
+                    needAdd.createUserId = saveDictionaryReq.id;
+                    needAdd.createUserName = saveDictionaryReq.name;
+                    i = _sysDictionaryRepository.SaveDictionaryInfo(needAdd);//保存到数据库
                 }
 
                 if (i > 0)
@@ -138,25 +134,25 @@ namespace VueElementAdminServices
         /// </summary>
         /// <param name="deleteMenuReq"></param>
         /// <returns></returns>
-        public CommonAPIResult<string> DeleteMenu(DeleteMenuReq deleteMenuReq)
+        public CommonAPIResult<string> DeleteDictionary(DeleteDictionaryReq deleteMenuReq)
         {
             CommonAPIResult<string> commonAPIResult = new CommonAPIResult<string>();
             try
             {
-                if (!deleteMenuReq.menuId.HasValue)
+                if (!deleteMenuReq.arryId.HasValue)
                 {
                     commonAPIResult.UpdateStatus("", MessageDict.Ok, "菜单ID不能为空！");
                     return commonAPIResult;
                 }
 
-                var parentList = _sysDictionaryRepository.GetMenuByParent(deleteMenuReq.menuId.Value); //查询当前菜单的子类
+                var parentList = _sysDictionaryRepository.GetDictionaryByParent(deleteMenuReq.arryId.Value); //查询当前菜单的子类
                 if (parentList.Count > 0)
                 {
                     commonAPIResult.UpdateStatus("", MessageDict.Failed, "删除失败！请先删除当前菜单下的菜单！");
                     return commonAPIResult;
                 }
 
-                var i = _sysDictionaryRepository.DeleteSysMenu(deleteMenuReq); //软删除菜单
+                var i = _sysDictionaryRepository.DeleteDictionary(deleteMenuReq); //软删除菜单
                 if (i > 0)
                 {
                     commonAPIResult.UpdateStatus("", MessageDict.Ok, "删除成功！");

@@ -1,9 +1,5 @@
 ﻿using SqlSugar;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VueElementAdminModel.MySqlModel
 {
@@ -13,17 +9,17 @@ namespace VueElementAdminModel.MySqlModel
         /// 数据字典表的主键
         /// </summary>
         [SugarColumn(IsPrimaryKey = true)]
-        public long arryid { get; set; }
+        public long arryId { get; set; }
 
         /// <summary>
         /// 名称
         /// </summary>
-        public string name { get; set; }
+        public string arryName { get; set; }
 
         /// <summary>
         /// 值
         /// </summary>
-        public string value { get; set; }
+        public string arryValue { get; set; }
 
         /// <summary>
         /// 父类ID

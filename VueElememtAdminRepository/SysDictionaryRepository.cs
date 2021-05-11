@@ -31,7 +31,7 @@ namespace VueElememtAdminRepository
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        public IEnumerable<sys_dictionary> GetMenuList(ref TableParame tableParame)
+        public IEnumerable<sys_dictionary> GetDictionaryList(ref TableParame tableParame)
         {
             using (Conn)
             {
@@ -56,39 +56,36 @@ namespace VueElememtAdminRepository
         }
 
         /// <summary>
-        /// 根据menuId查询菜单信息
+        /// 根据arryId查询数据字典
         /// </summary>
-        /// <param name="menuId"></param>
+        /// <param name="arryId"></param>
         /// <returns></returns>
-        public sys_menu GetMenuById(long menuId)
+        public sys_dictionary GetDictionaryById(long arryId)
         {
             using (Conn)
             {
-                return Conn.QueryFirstOrDefault<sys_menu>("select * from sys_menu where isDelete=0 and menuId=@menuId", new { menuId = menuId });
+                return Conn.QueryFirstOrDefault<sys_dictionary>("select * from sys_dictionary where isDelete=0 and arryId=@arryId", new { arryId = arryId });
             }
         }
 
         /// <summary>
-        /// 保存菜单记录
+        /// 保存数据字典
         /// </summary>
-        /// <param name="sys_menu"></param>
+        /// <param name="sys_Dictionary"></param>
         /// <returns></returns>
-        public int SaveSysMenuInfo(sys_menu sys_menu)
+        public int SaveDictionaryInfo(sys_dictionary sys_Dictionary)
         {
             using (Conn)
             {
-                return Conn.Execute(@"insert into sys_menu(menuName,parentId,sequence,route,iconClass,isDelete,createTime,createUserId,createUserName,operation) values(@menuName,@parentId,@sequence,@route,@iconClass,0,@createTime,@createUserId,@createUserName,@operation)", new
+                return Conn.Execute(@"insert into sys_dictionary(arryName,parentId,arryValue,isDelete,createTime,createUserId,createUserName) values(@arryName,@parentId,@arryValue,0,@createTime,@createUserId,@createUserName)", new
                 {
-                    menuName= sys_menu.menuName,
-                    parentId= sys_menu.parentId,
-                    sequence= sys_menu.sequence,
-                    route= sys_menu.route,
-                    iconClass= sys_menu.iconClass,
-                    operation= sys_menu.operation,
+                    parentId= sys_Dictionary.parentId,
+                    arryName = sys_Dictionary.arryName, 
+                    arryValue = sys_Dictionary.arryValue,
                     isDelete =0,
-                    createTime= sys_menu.createTime,
-                    createUserId= sys_menu.createUserId,
-                    createUserName= sys_menu.createUserName
+                    createTime= sys_Dictionary.createTime,
+                    createUserId= sys_Dictionary.createUserId,
+                    createUserName= sys_Dictionary.createUserName
                 });
             }
         }
@@ -96,24 +93,21 @@ namespace VueElememtAdminRepository
         /// <summary>
         /// 更新菜单记录
         /// </summary>
-        /// <param name="sys_menu"></param>
+        /// <param name="sys_Dictionary"></param>
         /// <returns></returns>
-        public int UpdateSysMenuInfo(sys_menu sys_menu)
+        public int UpdateDictionaryInfo(sys_dictionary sys_Dictionary)
         {
             using (Conn)
             {
-                return Conn.Execute(@" update sys_menu set menuName=@menuName,parentId=@parentId,sequence=@sequence,route=@route,iconClass=@iconClass,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime,operation=@operation where menuId=@menuId and isDelete=0", new
+                return Conn.Execute(@" update sys_dictionary set arryName=@arryName,parentId=@parentId,arryValue=@arryValue,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where arryId=@arryId and isDelete=0", new
                 {
-                    menuName = sys_menu.menuName,
-                    parentId = sys_menu.parentId,
-                    sequence = sys_menu.sequence,
-                    route = sys_menu.route,
-                    iconClass = sys_menu.iconClass,
-                    updateUserId = sys_menu.updateUserId,
-                    updateUserName = sys_menu.updateUserName,
-                    updateTime = sys_menu.updateTime,
-                    operation=sys_menu.operation,
-                    menuId = sys_menu.menuId
+                    arryName = sys_Dictionary.arryName,
+                    parentId = sys_Dictionary.parentId,
+                    arryValue = sys_Dictionary.arryValue,
+                    updateUserId = sys_Dictionary.updateUserId,
+                    updateUserName = sys_Dictionary.updateUserName,
+                    updateTime = sys_Dictionary.updateTime,
+                    arryId = sys_Dictionary.arryId
                 });
             }
         }
@@ -121,19 +115,19 @@ namespace VueElememtAdminRepository
         /// <summary>
         /// 软删除菜单
         /// </summary>
-        /// <param name="deleteMenuReq"></param>
+        /// <param name="deleteDictionaryReq"></param>
         /// <returns></returns>
-        public int DeleteSysMenu(DeleteMenuReq deleteMenuReq)
+        public int DeleteDictionary(DeleteDictionaryReq deleteDictionaryReq)
         {
             using (Conn)
             {
-                return Conn.Execute(@" update sys_menu set isDelete=@isDelete, updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where menuId=@menuId and isDelete=0 ", new
+                return Conn.Execute(@" update sys_dictionary set isDelete=@isDelete, updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where arryId=@arryId and isDelete=0 ", new
                 {
                     isDelete = 1,
-                    updateUserId = deleteMenuReq.id,
-                    updateUserName = deleteMenuReq.name,
+                    updateUserId = deleteDictionaryReq.id,
+                    updateUserName = deleteDictionaryReq.name,
                     updateTime = DateTime.Now,
-                    menuId = deleteMenuReq.menuId
+                    arryId = deleteDictionaryReq.arryId
                 });
             }
         }
@@ -143,11 +137,11 @@ namespace VueElememtAdminRepository
         /// </summary>
         /// <param name="parentId">父类ID</param>
         /// <returns></returns>
-        public List<sys_menu> GetMenuByParent(long parentId)
+        public List<sys_dictionary> GetDictionaryByParent(long parentId)
         {
             using (Conn)
             {
-                return Conn.Query<sys_menu>("select * from sys_menu where isDelete=0 and parentId=@parentId", new { parentId = parentId }).ToList();
+                return Conn.Query<sys_dictionary>("select * from sys_dictionary where isDelete=0 and parentId=@parentId", new { parentId = parentId }).ToList();
             }
         }
     }
