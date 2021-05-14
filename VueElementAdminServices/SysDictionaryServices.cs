@@ -24,15 +24,6 @@ namespace VueElementAdminServices
             _sysDictionaryRepository = sysDictionaryRepository;
         }
 
-        List<OperationItems> operationList = new List<OperationItems>() {
-            new OperationItems(){name="增加",value="insert"},
-            new OperationItems(){name="删除",value="delete"},
-            new OperationItems(){name="查询",value="select"},
-            new OperationItems(){name="修改",value="update"},
-            new OperationItems(){name="导出",value="export"},
-        };
-
-
         /// <summary>
         /// 获取全部的数据字典
         /// </summary>

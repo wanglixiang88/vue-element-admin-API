@@ -53,12 +53,12 @@ namespace VueElementAdminModel.APIModel
         /// <summary>
         /// 名称
         /// </summary>
-        public string name { get; set; }
+        public string arryName { get; set; }
 
         /// <summary>
         /// 值
         /// </summary>
-        public string value { get; set; }
+        public string arryValue { get; set; }
     }
 
 

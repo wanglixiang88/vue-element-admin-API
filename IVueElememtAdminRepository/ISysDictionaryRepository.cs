@@ -47,5 +47,12 @@ namespace IVueElememtAdminRepository
         /// <param name="parentId">父类ID</param>
         /// <returns></returns>
         List<sys_dictionary> GetDictionaryByParent(long parentId);
+
+        /// <summary>
+        /// 根据arryValue获取子类数据
+        /// </summary>
+        /// <param name="arryValue"></param>
+        /// <returns></returns>
+        IEnumerable<sys_dictionary> GetDictionaryByValue(string arryValue);
     }
 }

@@ -144,5 +144,18 @@ namespace VueElememtAdminRepository
                 return Conn.Query<sys_dictionary>("select * from sys_dictionary where isDelete=0 and parentId=@parentId", new { parentId = parentId }).ToList();
             }
         }
+
+        /// <summary>
+        /// 根据arryValue获取子类数据
+        /// </summary>
+        /// <param name="arryValue"></param>
+        /// <returns></returns>
+        public IEnumerable<sys_dictionary> GetDictionaryByValue(string arryValue)
+        {
+            using (Conn)
+            {
+                return Conn.Query<sys_dictionary>("select * from sys_dictionary where parentId = (select arryId from sys_dictionary where arryValue=@arryValue)", new { arryValue = arryValue });
+            }
+        }
     }
 }

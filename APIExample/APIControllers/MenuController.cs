@@ -18,7 +18,8 @@ namespace APIExample.APIControllers
     public class MenuController : ApiController
     {
         private readonly static ISysMenuRepository _sysMenuRepository = new SysMenuRepository();
-        private readonly IMenuServices _menuServices = new MenuServices(_sysMenuRepository);
+        private readonly static ISysDictionaryRepository _sysDictionaryRepository = new SysDictionaryRepository();
+        private readonly IMenuServices _menuServices = new MenuServices(_sysMenuRepository, _sysDictionaryRepository);
 
         /// <summary>
         /// 获取菜单列表

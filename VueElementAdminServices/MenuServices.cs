@@ -8,31 +8,23 @@ using ToolLibrary.Helper.Helper;
 using VueElementAdminModel.APIModel;
 using VueElementAdminModel.BaseModel;
 using VueElementAdminModel.MySqlModel;
-using VueElementAdminModel.MySqlModel;
 
 namespace VueElementAdminServices
 {
     public class MenuServices: IMenuServices
     {
-
-        private readonly ISysMenuRepository _sysMenuRepository;
+        private ISysMenuRepository _sysMenuRepository;
+        private ISysDictionaryRepository _sysDictionaryRepository;
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        public MenuServices(ISysMenuRepository sysMenuRepository)
+        public MenuServices(ISysMenuRepository sysMenuRepository, ISysDictionaryRepository sysDictionaryRepository)
         {
             _sysMenuRepository = sysMenuRepository;
+            _sysDictionaryRepository = sysDictionaryRepository;
         }
-
-        List<OperationItems> operationList = new List<OperationItems>() {
-            new OperationItems(){name="增加",value="insert"},
-            new OperationItems(){name="删除",value="delete"},
-            new OperationItems(){name="查询",value="select"},
-            new OperationItems(){name="修改",value="update"},
-            new OperationItems(){name="导出",value="export"},
-        };
-
+        
 
         /// <summary>
         /// 获取全部的菜单
@@ -50,7 +42,7 @@ namespace VueElementAdminServices
                     var operationList = JsonHelper.DeserializeList<OperationItems>(item.operation);
                     var treeVo = AutoMapper.To<sys_menu, menuList>(item);
                     treeVo.children = GetTreeVos(data, item.menuId);
-                    treeVo.modelOperation = operationList != null ? operationList.Select(t => t.value).ToList() : new List<string>();
+                    treeVo.modelOperation = operationList != null ? operationList.Select(t => t.arryValue).ToList() : new List<string>();
                     menuList.Add(treeVo);
                 }
             }
@@ -72,7 +64,7 @@ namespace VueElementAdminServices
                 {
                     var operationList = JsonHelper.DeserializeList<OperationItems>(item.operation);
                     treeVo.children = GetTreeVos(GetModelList, item.menuId);
-                    treeVo.modelOperation = operationList != null ? operationList.Select(t => t.value).ToList() : new List<string>();
+                    treeVo.modelOperation = operationList != null ? operationList.Select(t => t.arryValue).ToList() : new List<string>();
                     treeVos.Add(treeVo);
                 }
             }
@@ -97,8 +89,13 @@ namespace VueElementAdminServices
                 }
 
                 var valueList = JsonHelper.DeserializeList<string>(saveMenuReq.operation);
-                var newList = operationList.Where(t => valueList.Contains(t.value)).ToList();
-                saveMenuReq.operation = JsonHelper.Serialize(newList);
+
+                var newList = _sysDictionaryRepository.GetDictionaryByValue("PageFunction").Where(t => valueList.Contains(t.arryValue)).Select(t=>new OperationItems{
+                    arryName=t.arryName,
+                    arryValue=t.arryValue
+                }).ToList();
+
+                saveMenuReq.operation = JsonHelper.SerializeNoSetting(newList);
 
                 if (saveMenuReq.menuId.HasValue)
                 {
