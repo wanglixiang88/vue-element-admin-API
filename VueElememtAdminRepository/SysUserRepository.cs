@@ -49,6 +49,7 @@ namespace VueElememtAdminRepository
         {
             using (mysqlConn)
             {
+                //mysqlConn.CodeFirst.SetStringDefaultLength(200).InitTables(typeof(sys_user));//创建表
                 return mysqlConn.Queryable<sys_user>().Where(t => t.userName.Equals(userName) && t.passWord.Equals(passWord)).First();
             }
         }
