@@ -6,7 +6,7 @@ namespace VueElementAdminModel.MySqlModel
     public class sys_role
     {
         /// <summary>
-        /// 用户ID guid 唯一
+        /// 角色ID 主键 唯一
         /// </summary>
         [SugarColumn(IsPrimaryKey = true)]
         public long? roleId { get; set; }

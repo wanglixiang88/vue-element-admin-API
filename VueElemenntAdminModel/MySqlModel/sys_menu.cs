@@ -6,7 +6,7 @@ namespace VueElementAdminModel.MySqlModel
     public class sys_menu
     {
         /// <summary>
-        /// 菜单ID guid 唯一
+        /// 菜单ID 主键 唯一
         /// </summary>
         [SugarColumn(IsPrimaryKey = true)]
         public long menuId { get; set; }
