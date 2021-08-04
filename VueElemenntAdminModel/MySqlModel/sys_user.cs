@@ -6,7 +6,7 @@ namespace VueElementAdminModel.MySqlModel
     public class sys_user
     {
         /// <summary>
-        /// 用户ID guid 唯一
+        /// 用户ID 唯一
         /// </summary>
         [SugarColumn(IsPrimaryKey = true)]
         public long userId { get; set; }

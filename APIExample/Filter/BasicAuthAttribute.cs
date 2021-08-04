@@ -149,7 +149,7 @@ namespace APIExample.Filter
                 //}
                 //不用的验证Token方法
                 List<string> actionNames = new List<string>() {
-                    "login","UserLogin","GetUserDetail","GetAllMenu"
+                    "login","UserLogin","GetUserDetail","GetAllMenu","GetRoleMenu"
                 };
                 if (!actionNames.Contains(actionName))
                 {

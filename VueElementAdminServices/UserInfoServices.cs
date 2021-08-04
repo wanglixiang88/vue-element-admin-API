@@ -55,28 +55,29 @@ namespace VueElementAdminServices
                     commonAPIResult.UpdateStatus(null, MessageDict.Failed, "请检查用户名密码是否正确");
                     return commonAPIResult;
                 }
-                else
+                if (userInfo.isValid != 0)
                 {
-                    userInfo.tokenExpirationDate = DateTime.Now.AddDays(30);
-
-                    systemUser u = new systemUser();
-                    u = AutoMapper.To<sys_user, systemUser>(userInfo);//对象转换
-                    userInfo.userToken =JWTHelper.GetToken(u); //GWT更新生成token
-
-                    var i = _sysUserRepository.UpdateToken(userInfo); //更新token
-                    if (i > 0)
-                    {
-                        UserLoginRes userLoginRes = new UserLoginRes();
-                        userLoginRes.token = userInfo.userToken; //设置返回到页面的token
-                        commonAPIResult.UpdateStatus(userLoginRes, MessageDict.Ok, "登录成功！");
-                        return commonAPIResult;
-                    }
-                    else
-                    {
-                        commonAPIResult.UpdateStatus(null, MessageDict.SystemUnkonw, "未知错误，更新用户数据异常！");
-                        return commonAPIResult;
-                    }
+                    commonAPIResult.UpdateStatus(null, MessageDict.Failed, "请联系管理员设置账号登录的权限");
+                    return commonAPIResult;
                 }
+
+                userInfo.tokenExpirationDate = DateTime.Now.AddDays(30);
+
+                systemUser u = new systemUser();
+                u = AutoMapper.To<sys_user, systemUser>(userInfo);//对象转换
+                userInfo.userToken = JWTHelper.GetToken(u); //GWT更新生成token
+
+                var i = _sysUserRepository.UpdateToken(userInfo); //更新token
+                if (i > 0)
+                {
+                    UserLoginRes userLoginRes = new UserLoginRes();
+                    userLoginRes.token = userInfo.userToken; //设置返回到页面的token
+                    commonAPIResult.UpdateStatus(userLoginRes, MessageDict.Ok, "登录成功！");
+                    return commonAPIResult;
+                }
+
+                commonAPIResult.UpdateStatus(null, MessageDict.SystemUnkonw, "未知错误，更新用户数据异常！");
+                return commonAPIResult;
             }
             catch (Exception ex)
             {

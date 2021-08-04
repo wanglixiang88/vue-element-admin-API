@@ -34,7 +34,7 @@ namespace VueElementAdminServices
         public List<menuList> GetMenuList(ref TableParame tableParame)
         {
             var menuList = new List<menuList>();
-            var data = _sysMenuRepository.GetMenuList(ref tableParame).ToList();
+            var data = _sysMenuRepository.GetMenuList().ToList();
             foreach (var item in data)
             {
                 if (!item.parentId.HasValue)
@@ -88,9 +88,9 @@ namespace VueElementAdminServices
                     return commonAPIResult;
                 }
 
-                var valueList = JsonHelper.DeserializeList<string>(saveMenuReq.operation);
+                var valueList =string.IsNullOrEmpty(saveMenuReq.operation) ? new List<string>() : JsonHelper.DeserializeList<string>(saveMenuReq.operation);
 
-                var newList = _sysDictionaryRepository.GetDictionaryByValue("PageFunction").Where(t => valueList.Contains(t.arryValue)).Select(t=>new OperationItems{
+                var newList = _sysDictionaryRepository.GetDictionaryByValue("PageFunction").Where(t => valueList.Contains(t.arryValue)).ToList().Select(t=>new OperationItems{
                     arryName=t.arryName,
                     arryValue=t.arryValue
                 }).ToList();

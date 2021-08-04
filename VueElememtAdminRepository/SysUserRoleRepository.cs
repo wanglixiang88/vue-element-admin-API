@@ -38,7 +38,7 @@ namespace VueElememtAdminRepository
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public sys_role GetUserInfo(long roleId)
+        public sys_role GetRoleInfo(long roleId)
         {
             using (mysqlConn)
             {
@@ -85,40 +85,5 @@ namespace VueElememtAdminRepository
             }
         }
 
-        /// <summary>
-        /// 修改用户状态
-        /// </summary>
-        /// <param name="changUserVaildReq"></param>
-        /// <returns></returns>
-        public int ChangUserVaild(ChangUserVaildReq changUserVaildReq)
-        {
-            using (Conn)
-            {
-                return Conn.Execute(@" update sys_user set isValid=@isValid,updateUserId=@updateUserId,updateUserName=@updateUserName,updateTime=@updateTime where userId=@userId ", new
-                {
-                    isValid = changUserVaildReq.isValid,
-                    updateTime = DateTime.Now,
-                    updateUserId = changUserVaildReq.id,
-                    updateUserName = changUserVaildReq.name,
-                    userId = changUserVaildReq.userId
-                });
-            }
-        }
-
-        /// <summary>
-        /// 根据用户姓名获取用户信息
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <returns></returns>
-        public sys_user GetUserInfoByUserName(string userName)
-        {
-            using (Conn)
-            {
-                return Conn.QueryFirstOrDefault<sys_user>(@" select * from sys_user where userName=@userName ", new
-                {
-                    userName = userName
-                });
-            }
-        }
     }
 }

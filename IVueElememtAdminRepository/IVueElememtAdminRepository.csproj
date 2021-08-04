@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="ISysDictionaryRepository.cs" />
+    <Compile Include="ISysPermissionRoleRepository.cs" />
     <Compile Include="ISysMenuRepository.cs" />
     <Compile Include="ISysUserRoleRepository.cs" />
     <Compile Include="ISysUserRepository.cs" />

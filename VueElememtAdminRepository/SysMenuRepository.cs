@@ -26,32 +26,16 @@ namespace VueElememtAdminRepository
         public static SqlSugarClient mysqlConn = MySQLInfo.mySqlSugarClient();
 
         /// <summary>
-        /// 获取角色列表
+        /// 获取所有菜单列表
         /// </summary>
         /// <param name="parameterJson"></param>
         /// <param name="tableParame"></param>
         /// <returns></returns>
-        public IEnumerable<sys_menu> GetMenuList(ref TableParame tableParame)
+        public IEnumerable<sys_menu> GetMenuList()
         {
             using (Conn)
             {
-                StringBuilder sql = new StringBuilder();
-                sql.Append(@" SELECT * FROM  sys_menu where 1=1 and isDelete=0 ");
-                DynamicParameters ParamList = new DynamicParameters();
-                string WhereSql = ConditionBuilder.GetWhereSql(tableParame.parameterJson, out ParamList);
-                sql.Append(WhereSql);
-                if (!string.IsNullOrEmpty(tableParame.sidx))
-                {
-                    if (tableParame.sidx.ToUpper().IndexOf("ASC") + tableParame.sidx.ToUpper().IndexOf("DESC") > 0)
-                    {
-                        sql.Append(" Order By " + tableParame.sidx);
-                    }
-                    else
-                    {
-                        sql.Append(" Order By " + tableParame.sidx + " " + (tableParame.sort == "ASC" ? "" : "DESC"));
-                    }
-                }
-                return Conn.Query<sys_menu>(sql.ToString());
+                return Conn.Query<sys_menu>(" SELECT * FROM  sys_menu where 1 = 1 and isDelete = 0 order by sequence ");
             }
         }
 

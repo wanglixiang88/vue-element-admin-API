@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VueElemenntAdminModel.APIModel;
 using VueElementAdminModel.APIModel;
 using VueElementAdminModel.BaseModel;
 using VueElementAdminModel.MySqlModel;
@@ -29,13 +30,26 @@ namespace IVueElementAdminServices
         /// </summary>
         /// <param name="saveUserInfoReq"></param>
         /// <returns></returns>
-        CommonAPIResult<string> DeleteUser(RoleReq roleReq);
+        CommonAPIResult<string> DeleteRole(RoleReq roleReq);
+
+        #region 角色权限菜单
 
         /// <summary>
-        /// 改变用户状态
+        /// 获取角色菜单权限的列表
         /// </summary>
-        /// <param name="changUserVaildReq"></param>
+        /// <param name="roleReq"></param>
         /// <returns></returns>
-        CommonAPIResult<string> ChangUserVaild(ChangUserVaildReq changUserVaildReq);
+        List<GetPermissionRoleRes> GetRoleMenuList(RoleReq roleReq);
+
+        /// <summary>
+        /// 保存角色的权限
+        /// </summary>
+        /// <param name="savePermissionReq"></param>
+        /// <param name="id">操作人ID</param>
+        /// <param name="name">操作人名称</param>
+        /// <returns></returns>
+        CommonAPIResult<string> SavePermissionRole(SavePermissionRoleReq savePermissionReq);
+
+        #endregion
     }
 }

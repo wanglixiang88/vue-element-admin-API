@@ -49,7 +49,9 @@ namespace VueElememtAdminRepository
         {
             using (mysqlConn)
             {
-                return mysqlConn.Queryable<sys_user>().Where(t => t.userName.Equals(userName) && t.passWord.Equals(passWord)).First();
+                //mysqlConn.CodeFirst.SetStringDefaultLength(200).InitTables(typeof(sys_user));//创建表
+                //select table_name from information_schema.tables where table_schema = 'vue-element-admin'; //查询数据库里有哪些表
+                return mysqlConn.Queryable<sys_user>().Where(t => t.userName.Equals(userName) && t.passWord.Equals(passWord) && t.isDelete==0).First();
             }
         }
 

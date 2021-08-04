@@ -11,7 +11,7 @@ namespace IVueElememtAdminRepository
         /// </summary>
         /// <param name="userId">角色ID</param>
         /// <returns></returns>
-        sys_role GetUserInfo(long roleId);
+        sys_role GetRoleInfo(long roleId);
 
         /// <summary>
         /// 根据角色名称获取角色的详细信息
@@ -35,11 +35,5 @@ namespace IVueElememtAdminRepository
         /// <returns></returns>
         int SaveRoleInfo(sys_role sys_Role);
 
-        /// <summary>
-        /// 修改用户状态
-        /// </summary>
-        /// <param name="changUserVaildReq"></param>
-        /// <returns></returns>
-        int ChangUserVaild(ChangUserVaildReq changUserVaildReq);
     }
 }

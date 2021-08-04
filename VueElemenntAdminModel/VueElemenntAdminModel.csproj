@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIModel\Base.cs" />
+    <Compile Include="APIModel\PermissionRoleRelated.cs" />
     <Compile Include="APIModel\DictionaryRelated.cs" />
     <Compile Include="APIModel\MenuRelated.cs" />
     <Compile Include="APIModel\RoleRelated.cs" />

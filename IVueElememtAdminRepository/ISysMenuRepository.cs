@@ -13,9 +13,8 @@ namespace IVueElememtAdminRepository
         /// <summary>
         /// 获取全部的菜单
         /// </summary>
-        /// <param name="tableParame"></param>
         /// <returns></returns>
-        IEnumerable<sys_menu> GetMenuList(ref TableParame tableParame);
+        IEnumerable<sys_menu> GetMenuList();
 
         /// <summary>
         /// 根据menuId查询菜单信息
